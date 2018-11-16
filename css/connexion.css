@@ -1,0 +1,30 @@
+body{
+  margin:auto;
+  width: 500px;
+  height: 250px;
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
+
+.connexion{
+  border-style: solid;
+  width: 500px;
+  height: 250px;
+  text-align: center;
+}
+
+.identifiant{
+
+}
+
+input[type="text"]{
+  width: 300px;
+  text-align: center;
+}
+
+input[type="submit"]{
+  width: 100px;
+  height: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+}
