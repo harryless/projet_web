@@ -27,9 +27,14 @@ session_start( );
       $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
       $login = $_POST['login'];
 			$motDePasse = $_POST['passeword'];
-      $sql = "SELECT login,motDePasse FROM utilisateur WHERE login like '$login'";
+      $sql = "SELECT login,motDePasse,nom,prenom FROM utilisateur WHERE login like '$login'";
       $results=$database->query($sql);
-      if ($results->fetch()) {
+      if ($row=$results->fetch()) {
+
+          $_SESSION['prenom']=$row['nom'];
+       $_SESSION['nom'] = $row['prenom'];
+      
+
         header('Location: /projet_web/accueil.php');
           exit();
       }
