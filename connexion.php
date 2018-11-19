@@ -1,3 +1,8 @@
+<?php
+
+session_start( );
+ ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,16 +24,17 @@
     </form>
     <?php
     if (isset($_POST['valider'])) {
-      $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','');
+      $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
       $login = $_POST['login'];
 			$motDePasse = $_POST['passeword'];
-      $sql = "SELECT login,motDePasse FROM utilisateur WHERE login == '$login'";
+      $sql = "SELECT login,motDePasse FROM utilisateur WHERE login like '$login'";
       $results=$database->query($sql);
-      if ($results) {
-          echo "string";
+      if ($results->fetch()) {
+        header('Location: /projet_web/accueil.php');
+          exit();
       }
       else {
-        echo "query";
+        echo"login ou mot de passe  incorrect !!!</p>";
         }
 
       }
