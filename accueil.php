@@ -28,12 +28,13 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 	//echo "<tr>\n";
       $titre = $recette['titre'];
       echo "<li style='display:inline-block;'>";
-      $photo = iconv( 'UTF-8', 'ASCII//TRANSLIT//IGNORE', $titre );
-      $photo = str_replace(" ", "_", $photo);
+      $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+      $photo = str_replace(" ", "_",$photo);
       $photo = "Photos/".$photo.".jpg";
     echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
-    class='img-rounded zoom' src='$photo' width='150' height='150'/></ul><p style='width:100px;'>$titre</p>";
+    class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
+    <p style='width:100px;'>$titre</p><a href='accueil.php?titre=$titre' ";
     //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
     echo "</div>";
 
@@ -41,6 +42,19 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
       //	echo "</tr>\n";
 
+
+  }
+
+$login=$_SESSION['login'];
+  if (isset($_GET['titre'])) {
+    $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
+    $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
+    $database->query($idUtilisateur);
+    // $sql = "SELECT id_utilisateur FROM utilisateur u,panier p
+    //  WHERE login like '$login' AND u.id_utilisateur==p.id_utilisateur ";
+    $sql="INSERT INTO panier(id_utilisateur,titre_recette)
+    VALUES(1,'grgr')";
+    $results=$database->query($sql);
 
   }
 //

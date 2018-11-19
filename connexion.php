@@ -40,6 +40,7 @@ session_start( );
 
           $_SESSION['prenom']=$row['nom'];
        $_SESSION['nom'] = $row['prenom'];
+        $_SESSION['login'] = $row['login'];
 
 
         header('Location: /projet_web/accueil.php');
