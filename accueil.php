@@ -24,12 +24,21 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
   <?php
   foreach ($Recettes as $recette){
-
+	echo "<td>\n";
       $titre = $recette['titre'];
       echo "<li>";
-      echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
+      $photo = iconv( 'UTF-8', 'ASCII//TRANSLIT//IGNORE', $titre );
+      $photo = str_replace(" ", "_", $photo);
+      $photo = "Photos/".$photo.".jpg";
+    echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
+
+    class='img-rounded zoom' src='$photo' width='150' height='150'/></ul><p>$titre</p>";
+    //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
+    echo "</div>";
 
       echo "</li>";
+
+      	echo "</td>\n";
 
 
   }
