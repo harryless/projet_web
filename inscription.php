@@ -1,33 +1,25 @@
 <!DOCTYPE html>
-
 <html>
   <head>
-    <!--entete de la page-->
     <meta charset="utf8">
-    <!-- demander que le viewport du navigateur mobile == largeur de l'ecran -->
-    <meta name="viewport" content="width=device-width" />
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/inscription.css">
     <title>Creer un nouveau Compte</title>
-
    </head>
 
    <body id="formulaire">
 
        <header>
-	 <h1>INSCRIPTION</h1>
+         <form method="post" action="connexion.php">
+          <button class="btn btn-primary btn-recedent" type="submit" name="button">Page Precedente</button>
+         </form>
        </header>
-         <form method="post" action="connexion.php" id="Retoure">
-      <input type="submit" value="Page Precedente" />
-    </form>
-    <br><br><br><br><br><br>
 
 
-        <!--placeholder est un préremplissage du champ maxlength est le nombre de caractere que peut prendre le champ-->
-		<!--le mot cle required designe les attributs obligatoires-->
 	<form method="post" action="inscription.php">
-
-	 <!--Est la balise pour les formulaires-->
 
 	  <fieldset id="fieldset1">
 	    <legend>Votre identifiant </legend> <!--titre de fieldset-->

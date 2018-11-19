@@ -12,20 +12,27 @@ session_start( );
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <title>Connexion</title>
+
     </head>
-    <div class="container formulaire">
-      <form style="padding-top: 150px;" action="" method="post">
-        <div class="form-group">
-          <label for="">Identifiant:</label>
-          <input class="form-control form-control-lg" type="text" name="login" value="" placeholder="Votre Identifiant">
-        </div>
-        <div class="form-group">
-          <label for="">Mot de passe:</label>
-          <input class="form-control form-control-lg" type="text" name="passeword" value="" placeholder="Votre Mot de passe">
-        </div>
-        <button class="btn btn-primary" type="submit" name="valider">Connexion</button>
-      </form>
-    </div>
+    <header>
+
+    </header>
+    <body>
+      <div class="container back">
+        <form  class="container formulaire" style="padding-top: 20px;" action="" method="post">
+          <div class="form-group">
+            <label for="">Identifiant:</label>
+            <input class="form-control form-control-lg" type="text" name="login" value="" placeholder="Votre Identifiant">
+          </div>
+          <div class="form-group">
+            <label for="">Mot de passe:</label>
+            <input class="form-control form-control-lg" type="text" name="passeword" value="" placeholder="Votre Mot de passe">
+          </div>
+          <button class="btn btn-primary" type="submit" name="valider">Connexion</button>
+        </form>
+      </div>
+    </body>
+
 
 
 
@@ -61,7 +68,5 @@ session_start( );
 
 
 
-  <body>
 
-  </body>
 </html>
