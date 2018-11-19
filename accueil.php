@@ -1,4 +1,6 @@
 <?php session_start( ); ?>
+<?php include 'Donnees.inc.php'; ?>
+
 <!DOCTYPE html>
 <html >
   <head>
@@ -17,28 +19,27 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 </br></br></br></br>
  </br></br></br></br>
   </head>
-  <body>
+  <body >
   </br></br></br></br>
     </br></br></br></br>
-  <?php include 'Donnees.inc.php'; ?>
 
   <?php
   foreach ($Recettes as $recette){
-	echo "<td>\n";
+	//echo "<tr>\n";
       $titre = $recette['titre'];
-      echo "<li>";
+      echo "<li style='display:inline-block;'>";
       $photo = iconv( 'UTF-8', 'ASCII//TRANSLIT//IGNORE', $titre );
       $photo = str_replace(" ", "_", $photo);
       $photo = "Photos/".$photo.".jpg";
     echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
-    class='img-rounded zoom' src='$photo' width='150' height='150'/></ul><p>$titre</p>";
+    class='img-rounded zoom' src='$photo' width='150' height='150'/></ul><p style='width:100px;'>$titre</p>";
     //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
     echo "</div>";
 
       echo "</li>";
 
-      	echo "</td>\n";
+      //	echo "</tr>\n";
 
 
   }
