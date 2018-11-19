@@ -1,13 +1,7 @@
 <!DOCTYPE html>
-
 <html>
   <head>
-    <!--entete de la page-->
     <meta charset="utf8">
-    <!-- demander que le viewport du navigateur mobile == largeur de l'ecran -->
-    <meta name="viewport" content="width=device-width" />
-
-
     <title>Creer un nouveau Compte</title>
 
    </head>
@@ -22,12 +16,7 @@
     </form>
     <br><br><br><br><br><br>
 
-
-        <!--placeholder est un préremplissage du champ maxlength est le nombre de caractere que peut prendre le champ-->
-		<!--le mot cle required designe les attributs obligatoires-->
 	<form method="post" action="inscription.php">
-
-	 <!--Est la balise pour les formulaires-->
 
 	  <fieldset id="fieldset1">
 	    <legend>Votre identifiant </legend> <!--titre de fieldset-->
