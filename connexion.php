@@ -1,27 +1,34 @@
 <?php
-
 session_start( );
- ?>
+?>
 
 <!DOCTYPE html>
 <html>
     <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="css/connexion.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Connexion</title>
     </head>
-    <form class="connexion" action="" method="post">
-      <div class="identifiant">
-        <h2>Identifiant:</h2>
-        <input type="text" name="login" value="">
+    <div class="container formulaire">
+      <form style="padding-top: 150px;" action="" method="post">
+        <div class="form-group">
+          <label for="">Identifiant:</label>
+          <input class="form-control form-control-lg" type="text" name="login" value="" placeholder="Votre Identifiant">
+        </div>
+        <div class="form-group">
+          <label for="">Mot de passe:</label>
+          <input class="form-control form-control-lg" type="text" name="passeword" value="" placeholder="Votre Mot de passe">
+        </div>
+        <button class="btn btn-primary" type="submit" name="valider">Connexion</button>
+      </form>
+    </div>
 
-      </div>
-      <div class="mot de passe">
-        <h2>Mot de passe:</h2>
-        <input type="text" name="passeword" value="">
-      </div>
-      <input type="submit" name="valider" value="Connexion">
-    </form>
+
+
     <?php
     if (isset($_POST['valider'])) {
       $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
@@ -33,7 +40,7 @@ session_start( );
 
           $_SESSION['prenom']=$row['nom'];
        $_SESSION['nom'] = $row['prenom'];
-      
+
 
         header('Location: /projet_web/accueil.php');
           exit();

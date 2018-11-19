@@ -1,0 +1,14 @@
+.formulaire{
+  margin-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1000px;
+  height: 500px;
+  background: rgba(0, 0, 0,0.5);
+}
+
+button{
+  position: absolute;
+  right: 200px;
+  width: 300px;
+}
