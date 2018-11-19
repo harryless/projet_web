@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 19 nov. 2018 à 14:38
+-- Généré le :  lun. 19 nov. 2018 à 15:05
 -- Version du serveur :  10.1.36-MariaDB
 -- Version de PHP :  7.2.11
 
@@ -25,42 +25,23 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `panier`
---
-
-CREATE TABLE `panier` (
-  `id_panier` int(6) NOT NULL,
-  `id_utilisateur` int(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `panier`
---
-
-INSERT INTO `panier` (`id_panier`, `id_utilisateur`) VALUES
-(2, 1),
-(3, 2);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `recette`
 --
 
 CREATE TABLE `recette` (
   `id_recette` int(6) NOT NULL,
   `titre` varchar(50) NOT NULL,
-  `id_utlisateur` int(6) NOT NULL,
-  `id_panier` int(6) NOT NULL
+  `id_utlisateur` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `recette`
 --
 
-INSERT INTO `recette` (`id_recette`, `titre`, `id_utlisateur`, `id_panier`) VALUES
-(5, 'boisson', 1, 2),
-(7, 'boisson', 2, 3);
+INSERT INTO `recette` (`id_recette`, `titre`, `id_utlisateur`) VALUES
+(5, 'boisson', 1),
+(7, 'boisson', 2),
+(11, 'boisson', 1);
 
 -- --------------------------------------------------------
 
@@ -95,19 +76,10 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `nom`, `prenom`, `motDePas
 --
 
 --
--- Index pour la table `panier`
---
-ALTER TABLE `panier`
-  ADD PRIMARY KEY (`id_panier`),
-  ADD KEY `id_utilisateur` (`id_utilisateur`);
-
---
 -- Index pour la table `recette`
 --
 ALTER TABLE `recette`
-  ADD PRIMARY KEY (`id_recette`),
-  ADD UNIQUE KEY `id_panier` (`id_panier`),
-  ADD UNIQUE KEY `id_utlisateur` (`id_utlisateur`,`id_panier`);
+  ADD PRIMARY KEY (`id_recette`);
 
 --
 -- Index pour la table `utilisateur`
@@ -120,16 +92,10 @@ ALTER TABLE `utilisateur`
 --
 
 --
--- AUTO_INCREMENT pour la table `panier`
---
-ALTER TABLE `panier`
-  MODIFY `id_panier` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT pour la table `recette`
 --
 ALTER TABLE `recette`
-  MODIFY `id_recette` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_recette` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
@@ -142,17 +108,10 @@ ALTER TABLE `utilisateur`
 --
 
 --
--- Contraintes pour la table `panier`
---
-ALTER TABLE `panier`
-  ADD CONSTRAINT `panier_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
-
---
 -- Contraintes pour la table `recette`
 --
 ALTER TABLE `recette`
-  ADD CONSTRAINT `recette_ibfk_1` FOREIGN KEY (`id_panier`) REFERENCES `panier` (`id_panier`),
-  ADD CONSTRAINT `recette_ibfk_2` FOREIGN KEY (`id_utlisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
+  ADD CONSTRAINT `recette_ibfk_1` FOREIGN KEY (`id_utlisateur`) REFERENCES `utilisateur` (`id_utilisateur`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

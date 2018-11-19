@@ -14,7 +14,7 @@
 
        <header>
          <form method="post" action="connexion.php">
-          <button class="btn btn-primary btn-recedent" type="submit" name="button">Page Precedente</button>
+          <button class="btn btn-primary btn-precedent" type="submit" name="button">Page Precedente</button>
          </form>
        </header>
 
