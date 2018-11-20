@@ -48,20 +48,26 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
 $login=$_SESSION['login'];
  if (isset($_GET['titre'])) {
-$titreRecette=$_GET['titre'];
 
+    $titreRecette=$_GET['titre'];
     $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
     $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
     $res=$database->query($idUtilisateur)->fetch();
+    $id_user=$res['id_utilisateur'];
+//on verifier si on a pas deja la recette dans le panier
+    $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
+    $recetteExisteFin=$database->query($recetteExiste)->fetch();
+  if ($recetteExisteFin['nbrRecette']>0) {
+ echo "recette deja ajoutée ";
+  }else {
+
+    $database->query("INSERT INTO recette(titre,id_utilisateur)
+   VALUES('$titreRecette','$id_user')");
+
+}
 
 
-   $id_user=$res['id_utilisateur'];
 
-
-    // $sql = "SELECT id_utilisateur FROM utilisateur u,panier p
-    //  WHERE login like '$login' AND u.id_utilisateur==p.id_utilisateur ";
-$database->query("INSERT INTO recette(titre,id_utilisateur)
-    VALUES('$titreRecette','$id_user')");
 
 
 

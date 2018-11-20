@@ -53,8 +53,9 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
        echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
        class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
-       <p style='width:100px;'>$titre</p><a  href='panier.php?titre=$titre'>supprimer</a>";
+       <p style='width:100px;'>$titre</p><a id='supp' href='panier.php?titre=$titre'>supprimer</a>";
        //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
+
        echo "</div>";
 
          echo "</li>";
@@ -65,18 +66,18 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
      }
 
 }
+//supprission de recette
 $titreRecetteAsupp=$_GET['titre'];
 $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
 $database->query($suppRecette)->fetch();
-echo "
-<script type='text/javascript'>
-  $('#produitAffiche1')
-</script>
-";
 
 
+//nombre de recette d'un PANIER
 
 
+$nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
+$rescompt=$database->query($nbrRecette)->fetch();
+echo  $rescompt['nombreRecette'] ;
 
 
 
