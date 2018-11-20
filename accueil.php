@@ -11,6 +11,7 @@
 
     vous etes sur la page d Accueil
 </br></br></br></br>
+<a href="panier.php"> mon panier </a>
 </br></br></br></br>
 
 <?php
