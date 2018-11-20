@@ -53,19 +53,26 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
        echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
        class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
-       <p style='width:100px;'>$titre</p> ";
+       <p style='width:100px;'>$titre</p><a  href='panier.php?titre=$titre'>supprimer</a>";
        //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
        echo "</div>";
 
          echo "</li>";
 
-         //	echo "</tr>\n";
+
         }
 
      }
 
 }
-
+$titreRecetteAsupp=$_GET['titre'];
+$suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
+$database->query($suppRecette)->fetch();
+echo "
+<script type='text/javascript'>
+  $('#produitAffiche1')
+</script>
+";
 
 
 
@@ -78,4 +85,5 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 ?>
 
   </body>
+
 </html>
