@@ -10,7 +10,7 @@
     <title>Creer un nouveau Compte</title>
    </head>
 
-   <body id="formulaire" style="background:url('./Photos/Black_velvet.jpg');">
+   <body class="text-white" id="formulaire" style="background:url('./Photos/Black_velvet.jpg');">
        <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
          <h1 style="padding-top:10px;">Inscription</h1>
        </header>
@@ -61,8 +61,8 @@
             <input class="form-control" type="text" name="nomDeRue" id="nomDeRue" required/>
 
        	  </div>
-          <div class="form-group col mx-auto" role="group">
-            <a href="accueil.php" class="btn btn-warning" style="width:200px;">Precedent</a>
+          <div class="form-group col text-center my-auto" role="group">
+            <a href="accueil.php" class="mb-5 btn btn-warning" style="width:200px;">Precedent</a>
             <button class="btn btn-success" type="submit" name="Envoyer" style="width:200px;" >S'inscrire</button>
           </div>
 
