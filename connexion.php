@@ -14,7 +14,7 @@ session_start( );
     <title>Connexion</title>
 
     </head>
-    <header>
+    <header class="container">
 
     </header>
     <body>

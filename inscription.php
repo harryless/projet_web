@@ -6,60 +6,69 @@
     <script src="jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/inscription.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>Creer un nouveau Compte</title>
    </head>
 
-   <body id="formulaire">
-
-       <header>
-         <form method="post" action="connexion.php">
-          <button class="btn btn-primary btn-precedent" type="submit" name="button">Page Precedente</button>
-         </form>
+   <body id="formulaire" style="background:url('./Photos/Black_velvet.jpg');">
+       <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
+         <h1 style="padding-top:10px;">Inscription</h1>
        </header>
 
+       <div class="container mx-auto" style="background:rgba(0, 0, 0,0.5)" >
+         <form class="row" method="post" action="inscription.php">
 
-	<form method="post" action="inscription.php">
-
-	  <fieldset id="fieldset1">
-	    <legend>Votre identifiant </legend> <!--titre de fieldset-->
-	    <label for="login"> login </label> : <input type="texte" name="login" id="login" required/> </br>
-			<label for="motDePasse"> Mot De Passe </label> : <input type="number" name="motDePasse" id="motDePasse" required/> </br>
-	  </fieldset>
-
-
-	  <fieldset id="fieldset1">
-	    <legend>Vos coordonnées</legend>
-
-	    <label for='sexe'>Sexe</label> :
-			<select name='sexe' id='sexe'> <!--liste deroulante-->
-				<option value='h'>homme</option>
-				<option value='f'>femme</option>
-			</select></br>
-
-	    <label for='nom'>Nom</label> : <input type='text' name='nom' id='nom' autofocus required/> </br>
-	    <!-- aufocus=>le curseur dans prenom par defaut. required=>champ obligatoire-->
-	    <label for='prenom'>Prenom</label> : <input type='text' name='Prenom' id='prenom' required/> </br>
-	    <label for='telephone'>Telephone</label> : <input type='text' name='telephone' id='telephone' required/> </br>
-	    <label for='dateDeNaissance'>Date de naissance</label> : <input type='date' name='dateDeNaissance' id='DateDeNaissance' required/> </br>
-			<label for="text">E-mail</label> : <input type="email" name="email" id="email" required/> </br>
-
-	  </fieldset>
+       	  <div class="form-group col" >
+       	    <legend>Votre identifiant </legend>
+       	    <label for="login"> login </label>
+            <input class="form-control" type="text" name="login" id="login" required/>
+       			<label for="motDePasse"> Mot De Passe </label>
+            <input class="form-control" type="text" name="motDePasse" id="motDePasse" required/>
+       	  </div>
 
 
-	  <fieldset id="f2">
-	    <legend>Votre adresse</legend> <!--titre de fieldset-->
-	    <label for='ville'>Votre ville</label> : <input type="text" name="ville" id="ville" required/> </br>
-	    <label for="codePostal">Code Postal</label> : <input type="text" name="codePostal" id="codePostal" required/> </br>
-	    <label for="numeroDeRue">Numero de rue</label> : <input type="number" name="numeroDeRue" id="numeroDeRue" required/> </br>
-	    <label for="nomDeRue">Nom de rue</label> : <input type="text" name="nomDeRue" id="nomDeRue" required/> </br>
-	  </fieldset>
+       	  <div class="form-group col" style="padding-left:10px;">
+       	    <legend>Vos coordonnées</legend>
+       	    <label for='sexe'>Sexe</label> :
+       			<select class="form-control" name='sexe' id='sexe'>
+       				<option value='h'>homme</option>
+       				<option value='f'>femme</option>
+       			</select>
+
+       	    <label for='nom'>Nom</label>
+            <input class="form-control" type='text' name='nom' id='nom' autofocus required/>
+       	    <label for='prenom'>Prenom</label>
+            <input class="form-control" type='text' name='Prenom' id='prenom' required/>
+       	    <label for='telephone'>Telephone</label>
+            <input class="form-control" type='text' name='telephone' id='telephone' required/>
+       	    <label for='dateDeNaissance'>Date de naissance</label>
+            <input class="form-control" type='date' name='dateDeNaissance' id='DateDeNaissance' required/>
+       			<label for="text">E-mail</label>
+            <input class="form-control" type="email" name="email" id="email" required/>
+
+       	  </div>
 
 
-	  <br><br><br>
-	 <input  type="submit" value="Envoyer" name="Envoyer"/>
-	</form>
+       	  <div class="form-group col" style="padding-left:10px;">
+       	    <legend>Votre adresse</legend>
+       	    <label for='ville'>Votre ville</label>
+            <input class="form-control" type="text" name="ville" id="ville" required/>
+       	    <label for="codePostal">Code Postal</label>
+            <input class="form-control" type="text" name="codePostal" id="codePostal" required/>
+       	    <label for="numeroDeRue">Numero de rue</label>
+            <input class="form-control" type="number" name="numeroDeRue" id="numeroDeRue" required/>
+       	    <label for="nomDeRue">Nom de rue</label>
+            <input class="form-control" type="text" name="nomDeRue" id="nomDeRue" required/>
 
+       	  </div>
+          <div class="form-group col mx-auto" role="group">
+            <a href="accueil.php" class="btn btn-warning" style="width:200px;">Precedent</a>
+            <button class="btn btn-success" type="submit" name="Envoyer" style="width:200px;" >S'inscrire</button>
+          </div>
+
+       	</form>
+
+       </div>
 
 
 
