@@ -33,15 +33,15 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     $res=$database->query($idUtilisateur)->fetch();
     $id_user=$res['id_utilisateur'];
 
-    $recettesFavori="SELECT titre FROM recette WHERE id_utilisateur like '$id_user'";
+    $recettesFavori="SELECT DISTINCT titre FROM recette WHERE id_utilisateur like '$id_user'";
     $results=$database->query($recettesFavori);
     while ($row = $results->fetch()) {
       // code...
-      $tab['titre']=$row['titre'];
-     //echo $tab['titre'].'<br>'
+      //$tab['titre']=$row['titre'];
+    // echo $tab['titre'].'<br>';
     foreach ($Recettes as $recette){
 
-    if ($tab['titre']==$recette['titre']) {
+    if ($row['titre']==$recette['titre']) {
       // code...
 
 
@@ -53,18 +53,18 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
        echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
        class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
-       <p style='width:100px;'>$titre</p><a href='accueil.php?titre=$titre' ";
+       <p style='width:100px;'>$titre</p> ";
        //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
        echo "</div>";
 
          echo "</li>";
 
          //	echo "</tr>\n";
-}
+        }
 
      }
-}
 
+}
 
 
 
