@@ -59,8 +59,8 @@ $titreRecette=$_GET['titre'];
 
     // $sql = "SELECT id_utilisateur FROM utilisateur u,panier p
     //  WHERE login like '$login' AND u.id_utilisateur==p.id_utilisateur ";
-$database->query("INSERT INTO recette(titre,id_utlisateur)
-    VALUES('$titreRecette',$id_user)");
+$database->query("INSERT INTO recette(titre,id_utilisateur)
+    VALUES('$titreRecette','$id_user')");
 
 
 
