@@ -35,7 +35,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
 
     class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
-  <a href='accueil.php?titre=$titre'>  <p style='width:100px;'>$titre</p></a> ";
+  <p style='width:100px;'>$titre <a href='infoRecette.php?titre=$titre'> info recette </a></p><a href='accueil.php?titre=$titre'> ajouter au panier </a> ";
     //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
     echo "</div>";
 
