@@ -30,7 +30,14 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     foreach ($Recettes as $recette){
      $titre = $recette['titre'];
      if($_GET['titre']==$titre){
-       echo "titre : ".$recette['titre']."</br> ingredients : ".$recette['ingredients']."</br> preparation :".
+       echo "<li style='display:inline-block;'>";
+       $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+       $photo = str_replace(" ", "_",$photo);
+       $photo = "Photos/".$photo.".jpg";
+     echo  "<div id='produitAffiche1'> <ul class='list-inline'><img
+
+     class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>";
+       echo "titre : ".$recette['titre']."</br></br> ingredients : ".$recette['ingredients']."</br> </br> preparation :".
        $recette['preparation']."</br>";
      }
     }
