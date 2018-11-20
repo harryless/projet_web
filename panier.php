@@ -4,25 +4,23 @@
 <!DOCTYPE html>
 <html >
   <head>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <title>Panier</title>
 
 
   MON PANIER
-</br></br></br></br>
+
 <a href="accueil.php"> retourner a la page d 'accueil </a>
-</br></br></br></br>
+
 
 <?php
 echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
  ?>
-</br></br></br></br>
- </br></br></br></br>
+
   </head>
   <body >
-  </br></br></br></br>
-    </br></br></br></br>
+
 
   <?php
 
@@ -33,20 +31,18 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     $res=$database->query($idUtilisateur)->fetch();
     $id_user=$res['id_utilisateur'];
 
-    $recettesFavori="SELECT DISTINCT titre FROM recette WHERE id_utilisateur like '$id_user'";
+    $recettesFavori="SELECT DISTINCT titre,id_recette FROM recette WHERE id_utilisateur like '$id_user'";
     $results=$database->query($recettesFavori);
+
     while ($row = $results->fetch()) {
-      // code...
-      //$tab['titre']=$row['titre'];
-    // echo $tab['titre'].'<br>';
+
     foreach ($Recettes as $recette){
 
     if ($row['titre']==$recette['titre']) {
-      // code...
-
 
          $titre = $recette['titre'];
-         echo "<li style='display:inline-block;'>";
+         $idrecette = $row['id_recette'];
+         echo "<li id='$idrecette' style='display:inline-block;'>";
          $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
          $photo = str_replace(" ", "_",$photo);
          $photo = "Photos/".$photo.".jpg";
@@ -54,7 +50,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
        class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
        <p style='width:100px;'>$titre</p><a id='supp' href='panier.php?titre=$titre'>supprimer</a>";
-       //  echo '<img src="Photos/'.$titre.'.jpg" alt="" width="100" height="100">';
+
 
        echo "</div>";
 
@@ -66,23 +62,18 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
      }
 
 }
+
 //supprission de recette
-$titreRecetteAsupp=$_GET['titre'];
-$suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
-$database->query($suppRecette)->fetch();
+if(isset($_GET['titre'])){
+  $titreRecetteAsupp=$_GET['titre'];
+  $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
+  $database->query($suppRecette)->fetch();
 
-
+}
 //nombre de recette d'un PANIER
-
-
 $nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
 $rescompt=$database->query($nbrRecette)->fetch();
 echo  $rescompt['nombreRecette'] ;
-
-
-
-
-
 ?>
 
   </body>
