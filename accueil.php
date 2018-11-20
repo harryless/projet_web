@@ -48,11 +48,13 @@
 
       	   if (file_exists(''.$photo)) {
             echo "<li class='row mt-5 mx-auto list-group'>";
-            echo  "<div class='text-center' id='produitAffiche1'> <ul class='list-group-item'><img
-            class='img-rounded zoom' src='$photo' width='150' height='150'/></ul>
-            <p class='mx-auto' style='width:200px;'>$title[0]</p>
-            <a class='w-100 btn btn-primary' href='infoRecette.php?titre=$titre'><i class='fas fa-info-circle'></i> Info</a>
-            <a class='w-100 btn btn-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
+            echo  "<div class='text-center' id='produitAffiche1'>
+                    <ul class='list-group-item'>
+                      <img class='img-rounded zoom' src='$photo' width='150' height='150'/>
+                    </ul>
+                    <p class='mx-auto' style='width:200px;'>$title[0]</p>
+                    <a class='w-100 btn btn-primary' href='infoRecette.php?titre=$titre'><i class='fas fa-info-circle'></i> Info</a>
+                    <a class='w-100 btn btn-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
             echo "</div></li>";
             }
 
