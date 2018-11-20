@@ -78,7 +78,7 @@ $database->query($suppRecette)->fetch();
 
 $nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
 $rescompt=$database->query($nbrRecette)->fetch();
-echo  $rescompt['nombreRecette'] ;
+$_SESSION['panier']=$rescompt['nombreRecette'] ;
 
 
 

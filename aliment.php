@@ -51,7 +51,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 foreach ($tab as $value) {
   // code...
    echo "<li>";
-    echo "".$value;
+    echo "$value";
 
     echo "</li>";
 

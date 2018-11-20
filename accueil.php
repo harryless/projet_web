@@ -14,7 +14,7 @@
 <a href="panier.php"> mon panier </a>
 </br></br></br></br>
 </br></br></br></br>
-<a href="aliment.php"> liste d'aliments </a>
+<a href="aliment.php"> liste d'aliment </a>
 </br></br></br></br>
 
 <?php
