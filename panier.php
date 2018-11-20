@@ -62,12 +62,21 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
      }
 
 }
+<<<<<<< HEAD
 
 //supprission de recette
 if(isset($_GET['titre'])){
   $titreRecetteAsupp=$_GET['titre'];
   $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
   $database->query($suppRecette)->fetch();
+=======
+//supprission de recette
+if(isset($_GET['titre'])){
+$titreRecetteAsupp=$_GET['titre'];
+$suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
+$database->query($suppRecette)->fetch();
+}
+>>>>>>> e39265aa63e76b3ab83ce2158fcbc73b2d7dad5e
 
 }
 //nombre de recette d'un PANIER
