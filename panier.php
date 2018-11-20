@@ -38,11 +38,9 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     while ($row = $results->fetch()) {
       // code...
       $tab['titre']=$row['titre'];
-      echo $tab['titre'].'<br>';
-    }
-
+     //echo $tab['titre'].'<br>'
     foreach ($Recettes as $recette){
-   	//echo "<tr>\n";
+
     if ($tab['titre']==$recette['titre']) {
       // code...
 
@@ -65,7 +63,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 }
 
      }
-
+}
 
 
 
