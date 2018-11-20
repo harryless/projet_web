@@ -13,6 +13,9 @@
 </br></br></br></br>
 <a href="panier.php"> mon panier </a>
 </br></br></br></br>
+</br></br></br></br>
+<a href="aliment.php"> liste d'aliments </a>
+</br></br></br></br>
 
 <?php
 echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
