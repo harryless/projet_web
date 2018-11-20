@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>Creer un nouveau Compte</title>
    </head>
-
+ 
    <body class="text-white" id="formulaire" style="background:url('./Photos/Black_velvet.jpg');">
        <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
          <h1 style="padding-top:10px;">Inscription</h1>
