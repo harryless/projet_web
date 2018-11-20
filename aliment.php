@@ -34,18 +34,28 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
             foreach ($value as $key => $tmp) {
 
+
             if($key=='super-categorie'){
-                echo "<li>";
-                echo "".$tmp;
-                echo "</li>";
+              //  echo "<li>";
+              //  echo "".$tmp;
+              $tab[]=$tmp;
+              //  echo "</li>";
               }
 
             }
         }
 
-    }
+}
+    $tab= array_unique($tab);
 
+foreach ($tab as $value) {
+  // code...
+   echo "<li>";
+    echo "".$value;
 
+    echo "</li>";
+
+}
 
 ?>
 
