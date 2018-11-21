@@ -32,40 +32,21 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
   <?php
 
 
-  //on recupere la liste des super categorie
-    foreach ($Hierarchie as $key =>$aliment){
-
-        foreach ($aliment as $key =>$value) {
-
-            foreach ($value as $key => $tmp) {
 
 
-            if($key=="super-categorie"){
-              //  echo "<li>";
-              //  echo "".$tmp;
-              $tab[]=$tmp;
-              //  echo "</li>";
-              }
+if (isset($_GET['categorie'])){
 
-            }
-        }
+  foreach ($Hierarchie as $key =>$aliment){
+
+    echo "
+    <div  class='list-group'>
+   <a class='list-group-item list-group-item-action list-group-item-secondary'
+    href='aliment.php' style='width:35%';>$key</a>
+    </div>";
+
+  }
 
 }
-    $tab= array_unique($tab);
-
-foreach ($tab as $value) {
-  // code...
-   echo "
-   <div  class='list-group'>
-  <a class='list-group-item list-group-item-action list-group-item-secondary'
-   href='categorie.php?categorie=$value' style='width:35%';>$value</a>
-   </div>";
-
-
-
-}
-
-
 
 
 
