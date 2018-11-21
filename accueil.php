@@ -23,6 +23,7 @@
     <nav id="navbar-example2" class="navbar container">
     <ul class="nav nav-pills  mx-auto">
       <?php
+<<<<<<< HEAD
       foreach ($Hierarchie as $key1 =>$aliment) {
           foreach ($aliment as $key2 =>$value) {
             foreach ($value as $key3 => $tmp) {
@@ -41,6 +42,57 @@
               }
             }
           }
+=======
+
+      foreach ($Hierarchie as $key1 =>$aliment){
+
+          foreach ($aliment as $key2 =>$value) {
+
+              foreach ($value as $key3 => $tmp) {
+                if($key1=="Aliment" ){
+                  $tabAliments[]=$tmp;
+                }
+              }
+            }
+          }
+
+      foreach ($tabAliments as $key =>$a){
+
+              echo " <li class='nav-item dropdown '>";
+                echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
+                     href='#'  aria-haspopup='true' aria-expanded='false'>$a</a>";
+
+                     foreach ($Hierarchie as $key1 =>$aliment){
+
+                         foreach ($aliment as $key2 =>$value) {
+
+                             foreach ($value as $key3 => $tmp) {
+              if($key3=="super-categorie" && $tmp==$a ){
+
+                echo"   <div class='dropdown-menu'>
+                 <a class='dropdown-item' href='#one'>$key1 </a>";
+                    echo" </div> ";
+              }
+
+
+
+            }
+          }
+         }
+
+
+           echo"   </li>";
+       }
+
+
+
+
+
+                //  echo "</li>";
+
+
+
+>>>>>>> f9199ed474f4e694cd76106a8aaff38a3bcf9e64
 
       ?>
     </ul>
