@@ -19,10 +19,6 @@
     include 'header.php';
      ?>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 3274923a7b7812afd71569eaacddfa354a7cb6a7
 
     <body class="bg-dark text-white">
 
