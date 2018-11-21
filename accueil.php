@@ -23,6 +23,11 @@
     <nav id="navbar-example2" class="navbar container">
     <ul class="nav nav-pills  mx-auto">
       <?php
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> c84fc3fcbb7fef6f57b0ea62a7e803b08c604ec4
       foreach ($Hierarchie as $key1 =>$aliment){
 
           foreach ($aliment as $key2 =>$value) {
