@@ -30,7 +30,19 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     </br></br></br></br>
 
   <?php
+  foreach ($Hierarchie as $key1 =>$aliment){
 
+      foreach ($aliment as $key2 =>$value) {
+
+          foreach ($value as $key3 => $tmp) {
+            if($key1=="Aliment" ){
+              $tabAliments[]=$tmp;
+            }
+          }
+        }
+      }
+
+        foreach ($tabAliments as $key =>$a){
 
   //on recupere la liste des super categorie
     foreach ($Hierarchie as $key1 =>$aliment){
@@ -40,16 +52,26 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
             foreach ($value as $key3 => $tmp) {
 
 
-           if($key1=="Aliment" ){
+           if($key3=="super-categorie" && $tmp==$a ){
               //  echo "<li>";
-                echo "</br>".$tmp;
+                echo "</br>".$key1."  apartient a : ".$a;
 
               //  echo "</li>";
-             }
 
-            }
+            //
+          }
+          if($key3!="super-categorie"  ){
+             //  echo "<li>";
+            //   echo "</br>".$tmp."  sous categorie : ".$key1;
+
+             //  echo "</li>";
+
+           //
+         }
+          }
        }
 
+}
 }
   //  $tab= array_unique($tab);
 

@@ -26,33 +26,55 @@
     <!-- <a class="navbar-brand" href="#">Aliments</a> -->
     <ul class="nav nav-pills">
       <?php
+
       foreach ($Hierarchie as $key1 =>$aliment){
 
           foreach ($aliment as $key2 =>$value) {
 
               foreach ($value as $key3 => $tmp) {
-
-
-             if($key1=="Aliment" ){
-                //  echo "<li>";
-                echo"  <li class='nav-item dropdown '>
-                    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
-                     href='#' role='button' aria-haspopup='true' aria-expanded='false'>$tmp</a>
-                    <div class='dropdown-menu'>
-                      <a class='dropdown-item' href='#one'>one</a>
-                      <a class='dropdown-item' href='#two'>two</a>
-                      <div role='separator' class='dropdown-divider'></div>
-                      <a class='dropdown-item' href='#three'>three</a>
-                    </div>
-                  </li>";
-
-                //  echo "</li>";
-               }
-
+                if($key1=="Aliment" ){
+                  $tabAliments[]=$tmp;
+                }
               }
+            }
+          }
+
+      foreach ($tabAliments as $key =>$a){
+
+              echo " <li class='nav-item dropdown '>";
+                echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
+                     href='#'  aria-haspopup='true' aria-expanded='false'>$a</a>";
+
+                     foreach ($Hierarchie as $key1 =>$aliment){
+
+                         foreach ($aliment as $key2 =>$value) {
+
+                             foreach ($value as $key3 => $tmp) {
+              if($key3=="super-categorie" && $tmp==$a ){
+
+                echo"   <div class='dropdown-menu'>
+                 <a class='dropdown-item' href='#one'>$key1 </a>";
+                    echo" </div> ";
+              }
+
+
+
+            }
+          }
          }
 
-  }
+
+           echo"   </li>";
+       }
+
+
+
+
+
+                //  echo "</li>";
+
+
+
 
       ?>
     </ul>
