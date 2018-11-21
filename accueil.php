@@ -60,7 +60,7 @@
 
         }
 
-        $login=$_SESSION['login'];
+          $login=$_SESSION['login'];
          if (isset($_GET['titre'])) {
 
           $titreRecette=$_GET['titre'];

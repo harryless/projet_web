@@ -5,10 +5,6 @@
   width: 500px;
   height: 300px;
 }
-.back{
-  background: rgb(0,0,0);
-  opacity: 0.5;
-}
 
 body{
   background: url(../Photos/Black_velvet.jpg);
@@ -24,7 +20,5 @@ label{
 }
 
 button{
-  position: absolute;
-  right: 200px;
-  width: 300px;
+  background: rgb(238, 150, 111) !important;
 }

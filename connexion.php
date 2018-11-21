@@ -10,16 +10,15 @@ session_start( );
     <script src="jquery-3.3.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
     <title>Connexion</title>
 
     </head>
-    <header class="container">
-
+    <header class="container text-white text-center mb-5" style="height:100px;background:rgba(0, 0, 0,0.5)">
+      <h1>Connexion</h1>
     </header>
-    <body>
-      <div class="container back">
-        <form  class="container formulaire" style="padding-top: 20px;" action="" method="post">
+    <body class="text-white">
+      <div class="container" style="background:rgba(0, 0, 0,0.5);height:350px;">
+        <form  class="container pt-5 w-50" style="" action="" method="post">
           <div class="form-group">
             <label for="">Identifiant:</label>
             <input class="form-control form-control-lg" type="text" name="login" value="" placeholder="Votre Identifiant">
