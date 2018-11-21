@@ -12,25 +12,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet"  href="css/accueil.css" />
+
     </head>
 
     <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
-      <div class="btn-group">
 
+        <!-- //div aliment -->
+      <div  class="btn-group">
         <a class="btn btn-primary"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
       </div>
-      <div class="btn-group" role="group">
-        <a class="btn btn-danger mr-2" href="panier.php"><i class="far fa-thumbs-up"></i>Favoris </a>
-        <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+
+      <!-- //div panier -->
+      <!-- <div  id="panier"> -->
+        <a class="btn btn-danger mr-5 ml-5" href="panier.php"><i class="far fa-thumbs-up"></i>Favoris </a>
+      <!-- </div> -->
+
+      <!-- //div nom et prenom -->
+        <!-- <div  id="nomEtPrenom" > -->
+        <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle mr-5" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <?php
-          echo "<i class='far fa-user'></i> ".$_SESSION['nom'];
+          echo "<i class='far fa-user'></i> ".$_SESSION['nom']." ".$_SESSION['prenom'];
            ?>
         </button>
         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Deconnection</a>
+          <a class="dropdown-item" href="connexion.php"><i class="fas fa-sign-out-alt"></i>Deconnection</a>
         </div>
-      </div>
-      <div class="col">
+
+
+
+        <!-- //div nom site -->
+      <div  class="col">
         <h1>Les Recettes du moment</h1>
       </div>
     </header>
