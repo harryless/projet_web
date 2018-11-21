@@ -25,7 +25,6 @@
       <?php
 
 
-
       foreach ($Hierarchie as $key1 =>$aliment){
 
           foreach ($aliment as $key2 =>$value) {
