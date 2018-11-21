@@ -54,22 +54,41 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
            if($key3=="super-categorie" && $tmp==$a ){
               //  echo "<li>";
-                echo "</br>".$key1."  apartient a : ".$a;
+              //  echo "</br>".$key1."  apartient a : ".$a;
+                $tabSousCat[]=$key1;
 
               //  echo "</li>";
 
             //
           }
-          if($key3!="super-categorie"  ){
-             //  echo "<li>";
-            //   echo "</br>".$tmp."  sous categorie : ".$key1;
 
-             //  echo "</li>";
-
-           //
-         }
           }
        }
+
+}
+}
+foreach ($tabSousCat as $key =>$a){
+
+//on recupere la liste des super categorie
+foreach ($Hierarchie as $key1 =>$aliment){
+
+foreach ($aliment as $key2 =>$value) {
+
+    foreach ($value as $key3 => $tmp) {
+
+
+   if( $key1==$a && $key3!="sous-categorie" ){
+      //  echo "<li>";
+        echo "</br>".$tmp."apartient a :".$a;
+        //$tabSousCat[]=$key1;
+
+      //  echo "</li>";
+
+    //
+ }
+
+  }
+}
 
 }
 }
