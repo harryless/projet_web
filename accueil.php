@@ -43,7 +43,7 @@
 
 
         <!-- //div nom site -->
-      <div  class="col">
+      <div id="nomSite" class="col">
         <h1>Les Recettes du moment</h1>
       </div>
     </header>
