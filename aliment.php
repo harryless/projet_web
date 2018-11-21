@@ -33,37 +33,37 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
 
   //on recupere la liste des super categorie
-    foreach ($Hierarchie as $key =>$aliment){
+    foreach ($Hierarchie as $key1 =>$aliment){
 
-        foreach ($aliment as $key =>$value) {
+        foreach ($aliment as $key2 =>$value) {
 
-            foreach ($value as $key => $tmp) {
+            foreach ($value as $key3 => $tmp) {
 
 
-            if($key=="super-categorie"){
+           if($key1=="Aliment" ){
               //  echo "<li>";
-              //  echo "".$tmp;
-              $tab[]=$tmp;
+                echo "</br>".$tmp;
+
               //  echo "</li>";
-              }
+             }
 
             }
-        }
+       }
 
 }
-    $tab= array_unique($tab);
+  //  $tab= array_unique($tab);
 
-foreach ($tab as $value) {
-  // code...
-   echo "
-   <div  class='list-group'>
-  <a class='list-group-item list-group-item-action list-group-item-secondary'
-   href='categorie.php?categorie=$value' style='width:35%';>$value</a>
-   </div>";
-
-
-
-}
+// foreach ($tab as $value) {
+//   // code...
+//    echo "
+//    <div  class='list-group'>
+//   <a class='list-group-item list-group-item-action list-group-item-secondary'
+//    href='categorie.php?categorie=$value' style='width:35%';>$value</a>
+//    </div>";
+//
+//
+//
+// }
 
 
 
