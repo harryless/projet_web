@@ -12,15 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet"  href="css/accueil.css" />
-
     </head>
     <?php
     include 'header.php';
      ?>
 
 
-    <body class="bg-dark text-white">
+    <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
     <nav id="navbar-example2" class="navbar container">
     <ul class="nav nav-pills  mx-auto">
@@ -70,6 +68,7 @@
             }
 
         }
+
           if (isset($_SESSION['login'])) {
             $login=$_SESSION['login'];
           }

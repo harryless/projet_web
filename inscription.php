@@ -10,7 +10,7 @@
     <title>Creer un nouveau Compte</title>
    </head>
 
-   <body class="text-white" id="formulaire" style="background:url('./Photos/Black_velvet.jpg');">
+   <body class="text-white" id="formulaire" style="background:url(background.jpg);background-size:cover">
        <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
          <h1 style="padding-top:10px;">Inscription</h1>
        </header>

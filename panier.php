@@ -15,27 +15,9 @@
     <title>Panier</title>
   </head>
 
-    <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
-      <div class="btn-group">
-        <a class="btn btn-primary"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
-      </div>
-      <div class="btn-group" role="group">
-        <a class="btn btn-danger mr-2" href="panier.php"><i class="far fa-thumbs-up"></i>Favoris </a>
-        <button id="btnGroupDrop1" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php
-          echo "<i class='far fa-user'></i> ".$_SESSION['nom'];
-           ?>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>Deconnection</a>
-        </div>
-      </div>
-      <div class="col">
-        <h1>Mes Favoris</h1>
-      </div>
-    </header>
-
-
+  <?php
+  include 'header.php';
+   ?>
     <body >
       <div class="container row mx-auto">
         <?php

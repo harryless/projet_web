@@ -3,7 +3,12 @@
   <div class="row justify-content-between">
     <div class="btn-group col-4">
       <a class="btn btn-link"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
-      <a class="btn btn-link" href="panier.php"><i class="far fa-thumbs-up"></i>Favoris </a>
+      <?php
+        if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
+          echo "<a class='btn btn-link' href='panier.php'><i class='far fa-thumbs-up'></i>Favoris </a>";
+        }
+       ?>
+
     </div>
     <!-- div du boutton identifiant et desconnexion -->
     <div class="btn-group mt-2 col-4 row justify-content-end">

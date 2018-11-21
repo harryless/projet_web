@@ -16,7 +16,7 @@ session_start( );
     <header class="container text-white text-center mb-5" style="height:100px;background:rgba(0, 0, 0,0.5)">
       <h1>Connexion</h1>
     </header>
-    <body class="text-white">
+    <body class="text-white" style="background:url(background.jpg);background-size:cover">
       <div class="container" style="background:rgba(0, 0, 0,0.5);height:350px;">
         <form  class="container pt-5 w-50" style="" action="" method="post">
           <div class="form-group">
