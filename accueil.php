@@ -20,6 +20,7 @@
 
     <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
+<<<<<<< HEAD
     <nav id="navbar-example2" class="navbar container">
     <ul class="nav nav-pills  mx-auto">
       <?php
@@ -38,31 +39,50 @@
           }
 
       foreach ($tabAliments as $key =>$a){
+=======
+>>>>>>> 67a95dd0cfd7248ce2c70f9f3a99a4519ae370b7
 
-              echo " <li class='nav-item dropdown '>";
-                echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
-                     href='#' >$a</a>";
-                     echo "<div class='dropdown-menu'>";
-                     foreach ($Hierarchie as $key1 =>$aliment){
-
-                         foreach ($aliment as $key2 =>$value) {
-
-                             foreach ($value as $key3 => $tmp) {
-                                  if($key3=="super-categorie" && $tmp==$a ){
-                                echo  "</br>".$key1;
-
-                                  }
-                                }
-                          }
-                       }
-echo "</div>";
-
-           echo "   </li>";
-
-}
+      <?php
+        include 'nav_barr.php';
+//
+// //on rempli la table aliments
+//       foreach ($Hierarchie as $key1 =>$aliment){
+//
+//           foreach ($aliment as $key2 =>$value) {
+//
+//               foreach ($value as $key3 => $tmp) {
+//                 if($key1=="Aliment" ){
+//                   $tabAliments[]=$tmp;
+//                 }
+//               }
+//             }
+//           }
+//
+//       foreach ($tabAliments as $key =>$a){
+//
+//               echo " <li class='nav-item dropdown '>";
+//                 echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
+//                      href='#' >$a</a>";
+//                      echo "<div class='dropdown-menu'>";
+//                      foreach ($Hierarchie as $key1 =>$aliment){
+//
+//                          foreach ($aliment as $key2 =>$value) {
+//
+//                              foreach ($value as $key3 => $tmp) {
+//                                   if($key3=="super-categorie" && $tmp==$a ){
+//                                 echo  "</br>".$key1;
+//
+//                                   }
+//                                 }
+//                           }
+//                        }
+// echo "</div>";
+//
+//            echo "   </li>";
+//
+// }
       ?>
-    </ul>
-  </nav>
+
 
       <div class="container row mx-auto" style="background:rgba(0,0,0, 0.5)">
         <?php
