@@ -20,8 +20,8 @@
 
     <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
-    <nav id="navbar-example2" class="navbar container">
-    <ul class="nav nav-pills  mx-auto">
+    <nav id="menu-wrap" class="navbar container">
+    <ul id="menu" >
       <?php
 
 //on rempli la table aliments
