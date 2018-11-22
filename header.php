@@ -3,6 +3,7 @@
   <div class="row justify-content-between">
     <div class="btn-group col-4">
       <a class="btn btn-link"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
+      <a class="btn btn-link"  href="Accueil.php"><i class="fas fa-cocktail"></i> Accueil</a>
       <?php
         if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
           $login=$_SESSION['login'];
