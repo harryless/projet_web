@@ -42,20 +42,14 @@
               echo " <li class='nav-item dropdown '>";
                 echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
                      href='#' >$a</a>";
-  echo "<div class='dropdown-menu'>";
+                     echo "<div class='dropdown-menu'>";
                      foreach ($Hierarchie as $key1 =>$aliment){
 
                          foreach ($aliment as $key2 =>$value) {
 
                              foreach ($value as $key3 => $tmp) {
                                   if($key3=="super-categorie" && $tmp==$a ){
-
-                                    // echo "   <div class='dropdown-menu'>
-                                    //  <a class='dropdown-item'>$key1</a>";
-                                    // echo " </div> ";
                                 echo  "</br>".$key1;
-
-
 
                                   }
                                 }
@@ -86,7 +80,7 @@ echo "</div>";
                       <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>
                     </ul>
                     <p class='mx-auto' style='width:200px;'>$title[0]</p>
-                    <a class='w-100 btn btn-outline-warning' href='infoRecette.php?titre=$titre'><i class='fas fa-info-circle'></i> Info</a>
+                    <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title=$titre'><i class='fas fa-info-circle'></i> Info</a>
                     <a class='w-100 btn btn-outline-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
             echo "</div></li>";
             }
@@ -96,22 +90,23 @@ echo "</div>";
           if (isset($_SESSION['login'])) {
             $login=$_SESSION['login'];
           }
-         if (isset($_GET['titre'])) {
+          if (isset($_GET['titre'])) {
 
-          $titreRecette=$_GET['titre'];
-          $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
-          $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
-          $res=$database->query($idUtilisateur)->fetch();
-          $id_user=$res['id_utilisateur'];
-      //on verifier si on a pas deja la recette dans le panier
-          $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
-          $recetteExisteFin=$database->query($recetteExiste)->fetch();
-        if ($recetteExisteFin['nbrRecette']>0) {
-          echo "recette deja ajoutée ";
-        }else{
-          $database->query("INSERT INTO recette(titre,id_utilisateur)
-          VALUES('$titreRecette','$id_user')");
-        }
+            $titreRecette=$_GET['titre'];
+            $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
+            $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
+            $res=$database->query($idUtilisateur)->fetch();
+            $id_user=$res['id_utilisateur'];
+
+            //on verifier si on a pas deja la recette dans le panier
+            $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
+            $recetteExisteFin=$database->query($recetteExiste)->fetch();
+            if ($recetteExisteFin['nbrRecette']>0) {
+              echo "recette deja ajoutée ";
+            }else{
+              $database->query("INSERT INTO recette(titre,id_utilisateur)
+              VALUES('$titreRecette','$id_user')");
+            }
         }
       ?>
       </div>

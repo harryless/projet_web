@@ -21,7 +21,7 @@
       <?php
       foreach ($Recettes as $recette){
        $titre = $recette['titre'];
-       if($_GET['titre']==$titre){
+       if($_GET['title']==$titre){
          $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
          $photo = str_replace(" ", "_",$photo);
          $photo = "Photos/".$photo.".jpg";
@@ -49,21 +49,7 @@
                 echo "</table>";
 
                 echo "</div></li>";
-         // echo "<div class='row'>
-         //        <div class='col'>
-         //        <h2>Titre : </h2>
-         //          <p>".$recette['titre']."</p>
-         //        </div>
-         //        <div class='col'>
-         //        <h2>Ingredients : </h2>
-         //          <p>".$recette['ingredients']."</p>
-         //        </div>
-         //        <div class='col'>
-         //        <h2>Preparation : </h2>
-         //          <p>".$recette['preparation']."</p>
-         //        </div>";
-         // echo "</div>";
-         // echo "</div></li>";
+
        }
       }
       ?>
