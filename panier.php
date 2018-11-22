@@ -65,8 +65,12 @@
       $titreRecetteAsupp=$_GET['titre'];
       $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
       $database->query($suppRecette)->fetch();
+<<<<<<< HEAD
 
 
+=======
+      echo "<meta http-equiv='refresh' content='0;URL=panier.php'>";
+>>>>>>> 01236a2d03c88d4fc6aa6c4e6567af07412b8b38
     }
 
 
