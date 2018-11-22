@@ -1,8 +1,4 @@
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 container" role="navigation">
 
@@ -11,7 +7,7 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
+                <a class="nav-link btn dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown1</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown1">
                     <li class="dropdown-item" href="#"><a>Action 1</a></li>
                     <li class="dropdown-item dropdown">
@@ -29,7 +25,7 @@
                 </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
+                <a class="nav-link btn dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown2</a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown2">
                     <li class="dropdown-item" href="#"><a>Action 2 A</a></li>
                     <li class="dropdown-item" href="#"><a>Action 2 B</a></li>
@@ -78,7 +74,9 @@ $(document).ready(function () {
         var $el = $(this).children('.dropdown-toggle');
         var $parent = $el.offsetParent(".dropdown-menu");
         $(this).parent("li").toggleClass('open');
-
+        $("body").click(function(){
+          $(".dropdown-menu").find('.show').removeClass('show');
+        })
         if (!$parent.parent().hasClass('navbar-nav')) {
             if ($parent.hasClass('show')) {
                 $parent.removeClass('show');
