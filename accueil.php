@@ -65,20 +65,11 @@
            echo"   </li>";
        }
 
-
-
-
-
-                //  echo "</li>";
-
-
-
-
       ?>
     </ul>
   </nav>
 
-      <div class="container row mx-auto" style="background:rgb(0,0,0,0.5)">
+      <div class="container row mx-auto" style="background:rgba(0,0,0, 0.5)">
         <?php
         foreach ($Recettes as $recette){
           $titre = $recette['titre'];
@@ -91,11 +82,11 @@
             echo "<li class='row mt-2 mb-2 mx-auto list-group'>";
             echo  "<div class='text-center' id='produitAffiche1'>
                     <ul class='list-group-item'>
-                      <img class='img-rounded zoom' src='$photo' width='150' height='150'/>
+                      <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>
                     </ul>
                     <p class='mx-auto' style='width:200px;'>$title[0]</p>
-                    <a class='w-100 btn btn-primary' href='infoRecette.php?titre=$titre'><i class='fas fa-info-circle'></i> Info</a>
-                    <a class='w-100 btn btn-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
+                    <a class='w-100 btn btn-outline-warning' href='infoRecette.php?titre=$titre'><i class='fas fa-info-circle'></i> Info</a>
+                    <a class='w-100 btn btn-outline-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
             echo "</div></li>";
             }
 

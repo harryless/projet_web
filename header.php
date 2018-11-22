@@ -33,6 +33,6 @@
     </div>
   </div>
   <div  class="">
-    <h1>Les Recettes du moment</h1>
+    <h1><i class="fas fa-cocktail"></i>Les Recettes du moment</h1>
   </div>
 </header>
