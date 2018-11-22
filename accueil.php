@@ -24,7 +24,7 @@
     <ul class="nav nav-pills  mx-auto">
       <?php
 
-
+//on rempli la table aliments
       foreach ($Hierarchie as $key1 =>$aliment){
 
           foreach ($aliment as $key2 =>$value) {
@@ -41,30 +41,31 @@
 
               echo " <li class='nav-item dropdown '>";
                 echo "    <a class='nav-link dropdown-toggle btn-primary' data-toggle='dropdown'
-                     href='#'  aria-haspopup='true' aria-expanded='false'>$a</a>";
-
+                     href='#' >$a</a>";
+  echo "<div class='dropdown-menu'>";
                      foreach ($Hierarchie as $key1 =>$aliment){
 
                          foreach ($aliment as $key2 =>$value) {
 
                              foreach ($value as $key3 => $tmp) {
-              if($key3=="super-categorie" && $tmp==$a ){
+                                  if($key3=="super-categorie" && $tmp==$a ){
 
-                echo"   <div class='dropdown-menu'>
-                 <a class='dropdown-item' href='#one'>$key1 </a>";
-                    echo" </div> ";
-              }
-
-
-
-            }
-          }
-         }
+                                    // echo "   <div class='dropdown-menu'>
+                                    //  <a class='dropdown-item'>$key1</a>";
+                                    // echo " </div> ";
+                                echo  "</br>".$key1;
 
 
-           echo"   </li>";
-       }
 
+                                  }
+                                }
+                          }
+                       }
+echo "</div>";
+
+           echo "   </li>";
+
+}
       ?>
     </ul>
   </nav>
