@@ -65,8 +65,7 @@
       $titreRecetteAsupp=$_GET['titre'];
       $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
       $database->query($suppRecette)->fetch();
-      header('Location:panier.php');
-
+      echo "<meta http-equiv='refresh' content='0;URL=panier.php'>";
     }
 
     ?>
