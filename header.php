@@ -5,7 +5,16 @@
       <a class="btn btn-link"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
       <?php
         if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
-          echo "<a class='btn btn-link' href='panier.php'><i class='far fa-thumbs-up'></i>Favoris </a>";
+          $login=$_SESSION['login'];
+          $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
+          $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
+          $res=$database->query($idUtilisateur)->fetch();
+          $id_user=$res['id_utilisateur'];
+
+          $nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
+          $rescompt=$database->query($nbrRecette)->fetch();
+          $nbr_favs= $rescompt['nombreRecette'] ;
+          echo "<a class='btn btn-link' href='panier.php'><i class='far fa-thumbs-up'></i>Favoris <span class='badge badge-light'>$nbr_favs</span> </a>";
         }
        ?>
 

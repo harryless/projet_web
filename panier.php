@@ -65,19 +65,10 @@
       $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
       $database->query($suppRecette)->fetch();
 
-    //supprission de recette
-    if(isset($_GET['titre'])){
-    $titreRecetteAsupp=$_GET['titre'];
-    $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
-    $database->query($suppRecette)->fetch();
+
     }
 
 
-    }
-    //nombre de recette d'un PANIER
-    $nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
-    $rescompt=$database->query($nbrRecette)->fetch();
-    echo  $rescompt['nombreRecette'] ;
     ?>
       </div>
 
