@@ -20,8 +20,8 @@
 
     <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
-    <nav id="menu-wrap" class="navbar container">
-    <ul id="menu" >
+    <nav id="navbar-example2" class="navbar container">
+    <ul class="nav nav-pills  mx-auto">
       <?php
 
 //on rempli la table aliments
@@ -101,7 +101,9 @@ echo "</div>";
               $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
               $recetteExisteFin=$database->query($recetteExiste)->fetch();
               if ($recetteExisteFin['nbrRecette']>0) {
-                echo "recette deja ajoutée ";
+                echo "
+                  
+                ";
               }else{
                 $database->query("INSERT INTO recette(titre,id_utilisateur)
                 VALUES('$titreRecette','$id_user')");
