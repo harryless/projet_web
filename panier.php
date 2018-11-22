@@ -18,8 +18,8 @@
   <?php
   include 'header.php';
    ?>
-    <body >
-      <div class="container row mx-auto">
+    <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
+      <div class="container row mx-auto" style="background:rgba(0,0,0, 0.5)">
         <?php
         $login=$_SESSION['login'];
         $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
@@ -41,7 +41,7 @@
              $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
              $photo = str_replace(" ", "_",$photo);
              $photo = "Photos/".$photo.".jpg";
-           echo "<li class='row mt-5 mx-auto list-group' id='$idrecette'>";
+           echo "<li class='row mt-5 mb-5 mx-auto list-group' id='$idrecette'>";
              echo "<div class='text-center' id='produitAffiche1'>
                       <ul class='list-group-item'>
                       <img class='img-rounded zoom' src='$photo' width='150' height='150'/>
