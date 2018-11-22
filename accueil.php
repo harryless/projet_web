@@ -20,27 +20,7 @@
 
     <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
-<<<<<<< HEAD
-    <nav id="navbar-example2" class="navbar container">
-    <ul class="nav nav-pills  mx-auto">
-      <?php
 
-//on rempli la table aliments
-      foreach ($Hierarchie as $key1 =>$aliment){
-
-          foreach ($aliment as $key2 =>$value) {
-
-              foreach ($value as $key3 => $tmp) {
-                if($key1=="Aliment" ){
-                  $tabAliments[]=$tmp;
-                }
-              }
-            }
-          }
-
-      foreach ($tabAliments as $key =>$a){
-=======
->>>>>>> 67a95dd0cfd7248ce2c70f9f3a99a4519ae370b7
 
       <?php
         include 'nav_barr.php';
@@ -122,7 +102,7 @@
               $recetteExisteFin=$database->query($recetteExiste)->fetch();
               if ($recetteExisteFin['nbrRecette']>0) {
                 echo "
-                  
+
                 ";
               }else{
                 $database->query("INSERT INTO recette(titre,id_utilisateur)
