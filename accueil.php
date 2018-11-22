@@ -105,12 +105,14 @@ echo "</div>";
               }else{
                 $database->query("INSERT INTO recette(titre,id_utilisateur)
                 VALUES('$titreRecette','$id_user')");
-                
+                echo "<meta http-equiv='refresh' content='0;URL=accueil.php'>";
               }
 
           }
-        }else {
-          header('Location:connexion.php');
+        }elseif (isset($_GET['titre'])) {
+          echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
+        } {
+
       }
       ?>
       </div>
