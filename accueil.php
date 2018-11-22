@@ -21,7 +21,6 @@
     <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
 
 
-
       <?php
         include 'nav_barr.php';
 //
