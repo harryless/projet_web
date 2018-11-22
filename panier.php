@@ -40,7 +40,7 @@
              $titre = $recette['titre'];
              $idrecette = $row['id_recette'];
              $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
-             $photo = str_replace(" ", "_",$photo);
+             $photo = str_replace(" ","_",$photo);
              $photo = "Photos/".$photo.".jpg";
            echo "<li class='row mt-5 mb-5 mx-auto list-group' id='$idrecette'>";
              echo "<div class='text-center' id='produitAffiche1'>
@@ -65,8 +65,14 @@
       $titreRecetteAsupp=$_GET['titre'];
       $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
       $database->query($suppRecette)->fetch();
+
+
+
+
       echo "<meta http-equiv='refresh' content='0;URL=panier.php'>";
     }
+
+
 
     ?>
       </div>
