@@ -30,6 +30,10 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
     </br></br></br></br>
 
   <?php
+
+//fonction qui returne la liste des aliments
+
+
   foreach ($Hierarchie as $key1 =>$aliment){
 
       foreach ($aliment as $key2 =>$value) {
@@ -42,56 +46,54 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
         }
       }
 
-        foreach ($tabAliments as $key =>$a){
 
-  //on recupere la liste des super categorie
-    foreach ($Hierarchie as $key1 =>$aliment){
 
+
+
+    //foreach ($tabAliments as $key =>$a){
+
+      foreach ($Hierarchie as $key1 =>$aliment){
         foreach ($aliment as $key2 =>$value) {
+          foreach ($value as $key3 => $tmp) {
 
-            foreach ($value as $key3 => $tmp) {
+            if($key1=="Fruit" && $key2 == "sous-categorie"){
+              //echo "</br>".$tmp;
+              foreach ($Hierarchie as $key11 =>$aliment){
+                foreach ($aliment as $key22 =>$value) {
+                  foreach ($value as $key3 => $tmp1) {
 
+                    if( $key11==$tmp && $key22=="sous-categorie" ){
+                            echo "</br>".$tmp1."sous categorie de  :  ".$key11;
+                      //$tabSousSousCat[]=$key1;
+                    }
 
-           if($key3=="super-categorie" && $tmp==$a ){
-              //  echo "<li>";
-                echo "</br>".$key1."  apartient a : ".$a;
-                $tabSousCat[]=$key1;
-
-              //  echo "</li>";
-
-            //
-          }
-
+                  }
+                }
+              }
+              }
           }
        }
-
-}
-}
-foreach ($tabSousCat as $key =>$a){
-
-//on recupere la liste des super categorie
-foreach ($Hierarchie as $key1 =>$aliment){
-
-foreach ($aliment as $key2 =>$value) {
-
-    foreach ($value as $key3 => $tmp) {
+     }
+  // }
 
 
-   if( $key1==$a && $key3!="sous-categorie" ){
-      //  echo "<li>";
-      //  echo "</br>".$tmp."apartient a :".$a;
-        //$tabSousCat[]=$key1;
 
-      //  echo "</li>";
 
-    //
- }
+  foreach ($tabSousCat as $key =>$a){
+    foreach ($Hierarchie as $key1 =>$aliment){
+      foreach ($aliment as $key2 =>$value) {
+        foreach ($value as $key3 => $tmp) {
 
+          if( $key1==$a && $key2=="sous-categorie" ){
+                  echo "</br>".$tmp."sous categorie de  :  ".$key1;
+            //$tabSousSousCat[]=$key1;
+          }
+
+        }
+      }
+    }
   }
-}
 
-}
-}
   //  $tab= array_unique($tab);
 
 // foreach ($tab as $value) {
