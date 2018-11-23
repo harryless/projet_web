@@ -32,7 +32,7 @@ foreach ($Hierarchie as $key1 =>$aliment){
                             foreach ($Hierarchie as $key1 =>$aliment){
                               foreach ($aliment as $key2 =>$value) {
                                 foreach ($value as $key3 => $tmp) {
-                                                if($key1==$a && $key2=='sous-categorie' ){
+                                        if($key1==$a && $key2=='sous-categorie'){
     echo                   '<li class="dropdown-item dropdown">
                             <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp.'</a>
 
@@ -56,8 +56,21 @@ foreach ($Hierarchie as $key1 =>$aliment){
                                                                 foreach ($value as $key3333 => $tmp111) {
                                                                     if( $key1111==$tmp11 && $key2222=="sous-categorie" ){
 
-    echo                                                                     '<li>'.$tmp111.'</li>';
-                                                                    }
+    echo                                                                    '<li class="dropdown-item dropdown">
+                                                            <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp111.'</a>
+                                                            <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">';
+                                                            foreach ($Hierarchie as $key11111 =>$aliment){
+                                                              foreach ($aliment as $key22222 =>$value) {
+                                                                foreach ($value as $key33333 => $tmp1111) {
+                                                                    if( $key11111==$tmp111 && $key22222=="sous-categorie" ){
+    echo                                                                    '<li>'.$tmp1111.'</li>';
+                                                                        }
+                                                                }
+                                                            }
+                                                        }
+    echo                                                   '</ul>
+                                                            </li>';
+                                                        }
                                                                 }
                                                             }
                                                         }
@@ -77,7 +90,7 @@ foreach ($Hierarchie as $key1 =>$aliment){
 
     echo                  '</ul>
                         </li>';
-                                            }
+                    }
                                         }
                                     }
                                 }
