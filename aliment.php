@@ -1,5 +1,7 @@
 <?php session_start( ); ?>
-<?php include 'Donnees.inc.php'; ?>
+<?php include 'Donnees.inc.php';
+
+?>
 
 <!DOCTYPE html>
 <html >
@@ -63,8 +65,8 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
                   foreach ($value as $key3 => $tmp1) {
 
                     if( $key11==$tmp && $key22=="sous-categorie" ){
-                            echo "</br>".$tmp1."sous categorie de  :  ".$key11;
-                      //$tabSousSousCat[]=$key1;
+                        //   echo "</br>".$tmp1."sous categorie de  :  ".$key11;
+                       $tabSousSousCat[]=$tmp1;
                     }
 
                   }
@@ -85,7 +87,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
         foreach ($value as $key3 => $tmp) {
 
           if( $key1==$a && $key2=="sous-categorie" ){
-                  echo "</br>".$tmp."sous categorie de  :  ".$key1;
+                //echo "</br>".$tmp."sous categorie de  :  ".$key1;
             //$tabSousSousCat[]=$key1;
           }
 
@@ -108,11 +110,143 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 //
 // }
 
+foreach ($Recettes as $key1 => $value1) {
+  foreach ($value1 as $key2 => $value2) {
+    foreach ($value2 as $key3 => $value3) {
+      // code...
 
+    // code...
+    if ($key2=='index' && $value3=='Limonade') {
+      // code...
 
+      echo "</br>".$value1['titre'];
+    }
+
+  }
+}
+}
+
+foreach ($Hierarchie as $key1 =>$aliment){
+
+    foreach ($aliment as $key2 =>$value) {
+
+        foreach ($value as $key3 => $tmp) {
+          if($key1!="Aliment" ){
+            $tabAliments[]=$tmp;
+          //  echo "</br>".$tmp;
+          }
+        }
+      }
+    }
 
 
 ?>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
+
+<script>
+
+            function tabDeRecettes(){
+               var liste = new Array() ;
+
+               <?php
+
+
+
+
+
+
+               $key=0;
+               while($key<107){
+                   $key = key($Recettes) ;
+                   echo "res[".$key."] = new Array()"."\r\n" ;
+                   echo "res[".$key."][\"titre\"] = \"".str_replace("\"", '\"', $Recettes[$key]['titre'])."\" ; "."\r\n" ;
+                   echo "res[".$key."][\"ingredients\"] = \"".str_replace("\"", '\"',$Recettes[$key]['ingredients'])."\" ; "."\r\n" ;
+                   echo "res[".$key."][\"preparation\"] = \"".str_replace("\"", '\"',$Recettes[$key]['preparation'])."\" ; "."\r\n" ;
+                   echo "res[".$key."][\"index\"] = new Array() ; "."\r\n" ;
+                   $numIng = 0 ;
+                   foreach ($Recettes[$key]['index'] as $ing) {
+                       echo "res[".$key."][\"index\"][".$numIng."] = \"".str_replace("'","",$ing)."\" ; "."\r\n" ;
+                       $numIng++ ;
+                   }
+                   next($Recettes) ;
+               }
+
+               ?>
+               return res ;
+           }
+
+           function tableauDAliments(){
+               //penser à remettre les single quotes
+                  var tableauDAliments = new Array() ;
+               <?php
+               foreach ($Hierarchie as $key1 =>$aliment){
+
+                   foreach ($aliment as $key2 =>$value) {
+
+                       foreach ($value as $key3 => $tmp) {
+                         if($key1!="Aliment" ){
+                           echo "tableauDAliments[]=".$tmp;
+                           echo "</br>".$tmp;
+                         }
+                       }
+                     }
+                   }
+
+               ?>
+               return tableauDAliments;
+           }
+
+
+            function afficheRecettes(aliment){
+                var recettes = recupRecettes();
+                var hierarchie = recupTab();
+
+               for(var i = 0; i<=107; i++){
+
+                   if(recettes[i]['index'].includes(aliment)){
+                       $("#recettes").append($("<li>"+recettes[i]['titre']+"</li>").addClass("recette")) ;
+                   }
+               }
+               console.log(aliment) ;
+               for(var key in hierarchie[aliment]['sous-categorie']){
+                   afficheRecettes(hierarchie[aliment]['sous-categorie'][key], recettes, hierarchie) ;
+               }
+           }
+
+       </script>
+       <div >
+
+
+       <label for="champ_recherche">Recherche par aliments:</label>
+              <input type="search" id="champ_recherche" name="champ_recherche" autocomplete="on"
+                     aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste_data" >
+
+              <datalist id = 'liste_data'>
+                    <?php
+                if(isset($Hierarchie)){
+                    $i=0;
+                   foreach ($Hierarchie as $element){
+
+                      echo "<option>";
+                      echo array_keys($Hierarchie)[$i];
+                      echo "</option>";
+                      $i++;
+                       }
+
+                  }
+
+
+              ?>
+              </datalist>
+
+              <button id ="bouton_recherche_recette" name = "bouton_recherche_recette" onclick="afficheRecettes(champ_recherche.value)">Rechercher</button>
+              </div>
+              <div id="recettes">
+
+      </div>
+
 
   </body>
 

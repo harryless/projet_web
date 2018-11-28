@@ -7,6 +7,8 @@
     <meta charset="utf-8">
     <title>Accueil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="js/jquery.min.js"></script>
+  <script src="js/typeahead.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -18,7 +20,7 @@
      ?>
 
 
-    <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
+    <body class="bg-dark text-white" style="background:url(background1.jpg);background-size:cover">
 
 
       <?php
@@ -63,7 +65,7 @@
       ?>
 
 
-      <div class="container row mx-auto" style="background:rgba(0,0,0, 0.5)">
+      <div class="container row mx-auto border border-danger" style="background:rgba(0,0,0, 0.5)">
         <?php
         foreach ($Recettes as $recette){
           $titre = $recette['titre'];
@@ -119,7 +121,7 @@
       </div>
 
     </body>
-    <footer class="container mt-2"style="background:rgb(0,0,0,0.5);height:100px;">
+    <footer class="container mt-2 border border-danger"style="background:rgb(0,0,0,0.5);height:100px;">
 
     </footer>
     </html>

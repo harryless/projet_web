@@ -1,4 +1,3 @@
-<?php include 'Donnees.inc.php'; ?>
 
 <?php
 //tableau d aliments
@@ -18,7 +17,7 @@ foreach ($Hierarchie as $key1 =>$aliment){
 
     ?>
     <?php
-    echo '<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 container" role="navigation">';
+    echo '<div class="navbar navbar-expand-md border border-danger navbar-dark mb-4 container" role="navigation" style="background:rgba(0,0,0,0.5)">';
       foreach ($tabAliments as $key =>$a){
 
 
@@ -103,10 +102,11 @@ foreach ($Hierarchie as $key1 =>$aliment){
 ?>
 
 
-        <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+    <div id="the-basics">
+    <input class="typeahead" type="text" placeholder="States of USA">
+
+
+  </div>
 
 
 
@@ -144,4 +144,44 @@ $(document).ready(function () {
     });
 
 });
+    
+    var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
+
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
+
+var states = <?php echo json_encode($tabAliments); ?>
+
+$('#the-basics .typeahead').typeahead({
+  hint: true,
+  highlight: true,
+  minLength: 1
+},
+{
+  name: 'states',
+  source: substringMatcher(states)
+});
+
+
+
 </script>
+
+
+
