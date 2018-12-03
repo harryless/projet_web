@@ -36,102 +36,13 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 //fonction qui returne la liste des aliments
 
 
-  foreach ($Hierarchie as $key1 =>$aliment){
-
-      foreach ($aliment as $key2 =>$value) {
-
-          foreach ($value as $key3 => $tmp) {
-            if($key1=="Aliment" ){
-              $tabAliments[]=$tmp;
-            }
-          }
-        }
-      }
-
-
-
-
-
-    //foreach ($tabAliments as $key =>$a){
-
-      foreach ($Hierarchie as $key1 =>$aliment){
-        foreach ($aliment as $key2 =>$value) {
-          foreach ($value as $key3 => $tmp) {
-
-            if($key1=="Fruit" && $key2 == "sous-categorie"){
-              //echo "</br>".$tmp;
-              foreach ($Hierarchie as $key11 =>$aliment){
-                foreach ($aliment as $key22 =>$value) {
-                  foreach ($value as $key3 => $tmp1) {
-
-                    if( $key11==$tmp && $key22=="sous-categorie" ){
-                        //   echo "</br>".$tmp1."sous categorie de  :  ".$key11;
-                       $tabSousSousCat[]=$tmp1;
-                    }
-
-                  }
-                }
-              }
-              }
-          }
-       }
-     }
-  // }
-
-
-
-
-  foreach ($tabSousCat as $key =>$a){
-    foreach ($Hierarchie as $key1 =>$aliment){
-      foreach ($aliment as $key2 =>$value) {
-        foreach ($value as $key3 => $tmp) {
-
-          if( $key1==$a && $key2=="sous-categorie" ){
-                //echo "</br>".$tmp."sous categorie de  :  ".$key1;
-            //$tabSousSousCat[]=$key1;
-          }
-
-        }
-      }
-    }
-  }
-
-  //  $tab= array_unique($tab);
-
-// foreach ($tab as $value) {
-//   // code...
-//    echo "
-//    <div  class='list-group'>
-//   <a class='list-group-item list-group-item-action list-group-item-secondary'
-//    href='categorie.php?categorie=$value' style='width:35%';>$value</a>
-//    </div>";
-//
-//
-//
-// }
-
-foreach ($Recettes as $key1 => $value1) {
-  foreach ($value1 as $key2 => $value2) {
-    foreach ($value2 as $key3 => $value3) {
-      // code...
-
-    // code...
-    if ($key2=='index' && $value3=='Limonade') {
-      // code...
-
-      echo "</br>".$value1['titre'];
-    }
-
-  }
-}
-}
-
 foreach ($Hierarchie as $key1 =>$aliment){
 
     foreach ($aliment as $key2 =>$value) {
 
         foreach ($value as $key3 => $tmp) {
           if($key1!="Aliment" ){
+
             $tabAliments[]=$tmp;
           //  echo "</br>".$tmp;
           }
@@ -145,97 +56,170 @@ foreach ($Hierarchie as $key1 =>$aliment){
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 
-<script>
-
-            function tabDeRecettes(){
-               var liste = new Array() ;
 
                <?php
 
+               function tabDeRecettes($ali){
 
+                  foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1'])  {
+                       foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
+                         foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
 
+                              if ($GLOBALS['key2']=='index' && $GLOBALS['value3']==$ali) {
 
+                                  echo  $GLOBALS['value1']["titre"];
 
+                                }
 
-               $key=0;
-               while($key<107){
-                   $key = key($Recettes) ;
-                   echo "res[".$key."] = new Array()"."\r\n" ;
-                   echo "res[".$key."][\"titre\"] = \"".str_replace("\"", '\"', $Recettes[$key]['titre'])."\" ; "."\r\n" ;
-                   echo "res[".$key."][\"ingredients\"] = \"".str_replace("\"", '\"',$Recettes[$key]['ingredients'])."\" ; "."\r\n" ;
-                   echo "res[".$key."][\"preparation\"] = \"".str_replace("\"", '\"',$Recettes[$key]['preparation'])."\" ; "."\r\n" ;
-                   echo "res[".$key."][\"index\"] = new Array() ; "."\r\n" ;
-                   $numIng = 0 ;
-                   foreach ($Recettes[$key]['index'] as $ing) {
-                       echo "res[".$key."][\"index\"][".$numIng."] = \"".str_replace("'","",$ing)."\" ; "."\r\n" ;
-                       $numIng++ ;
-                   }
-                   next($Recettes) ;
-               }
-
-               ?>
-               return res ;
-           }
-
-           function tableauDAliments(){
-               //penser à remettre les single quotes
-                  var tableauDAliments = new Array() ;
-               <?php
-               foreach ($Hierarchie as $key1 =>$aliment){
-
-                   foreach ($aliment as $key2 =>$value) {
-
-                       foreach ($value as $key3 => $tmp) {
-                         if($key1!="Aliment" ){
-                           echo "tableauDAliments[]=".$tmp;
-                           echo "</br>".$tmp;
-                         }
                        }
                      }
                    }
 
-               ?>
-               return tableauDAliments;
-           }
+//return $ali;
+              }
+
+//------------------------------------------------------------
+function sousCategorie($aliment){
+  foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1'])  {
+       foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
+         foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
+
+              if ($GLOBALS['key1']==$aliment && $GLOBALS['key2']=="sous-categorie") {
+
+                //  $tab[]= $GLOBALS['value3'];
+                  echo $GLOBALS['value3']."</br>";}
 
 
-            function afficheRecettes(aliment){
-                var recettes = recupRecettes();
-                var hierarchie = recupTab();
+       }
+     }
+   }
+return $tab;
+}
+$ali[]=sousCategorie("Légume");
 
-               for(var i = 0; i<=107; i++){
+  //sousCategorie($GLOBALS['value3']);
+              ?>
 
-                   if(recettes[i]['index'].includes(aliment)){
-                       $("#recettes").append($("<li>"+recettes[i]['titre']+"</li>").addClass("recette")) ;
-                   }
-               }
-               console.log(aliment) ;
-               for(var key in hierarchie[aliment]['sous-categorie']){
-                   afficheRecettes(hierarchie[aliment]['sous-categorie'][key], recettes, hierarchie) ;
-               }
-           }
+
+
+
+
+
+
+
+
+
+
+
+   <script>
+   function tabDAliments(){
+       var tab = new Array() ;
+
+<?php
+
+
+
+       foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1'])  {
+         foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
+           foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
+
+             if($GLOBALS['key1']!="aliment" ){
+              // echo "tab= \"".str_replace("'", "", $GLOBALS['key1'])."\" ;"."\r\n" ;
+
+
+             }
+
+              }
+            }
+          }
+
+      //   echo "return tab"."\r\n" ;
+
+
+?>
+
+    // $key = "" ;
+    // while($key != 'Aliment'){
+    //
+    //     $key = key($Hierarchie) ;
+    //     $key = str_replace("'", "", $key) ;
+    //     echo "res[\"".$key."\"] = new Array() ;"."\r\n" ;
+    //     echo "res[\"".$key."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
+    //     echo "res[\"".$key."\"]['super-categorie'] = new Array() ;"."\r\n" ;
+    //     $pos = 0 ;
+    //     foreach ($Hierarchie[$key]['sous-categorie'] as $ssc){
+    //         echo "res[\"".$key."\"]['sous-categorie'][".$pos."] = \"".str_replace("'", "", $ssc)."\" ;"."\r\n" ;
+    //         $pos++ ;
+    //     }
+    //     $pos = 0 ;
+    //     foreach ($Hierarchie[$key]['super-categorie'] as $spc){
+    //         echo "res[\"".$key."\"]['super-categorie'][".$pos."] = \"".str_replace("'", "", $spc)."\" ;"."\r\n" ;
+    //         $pos++ ;
+    //     }
+    //     next($Hierarchie) ;
+    // }
+    // echo "return res"."\r\n" ;
+   }
+   function recupRecettes(){
+      var res = new Array() ;
+      <?php
+  
+        foreach ($Recettes as $key => $value) {
+          // code...
+
+          echo "res[".$key."] = new Array()"."\r\n" ;
+          echo "res[".$key."][\"titre\"] = \"".str_replace("\"", '\"', $Recettes[$key]['titre'])."\" ; "."\r\n" ;
+          echo "res[".$key."][\"index\"] = new Array() ; "."\r\n" ;
+          $numIng = 0 ;
+          foreach ($Recettes[$key]['index'] as $ing) {
+              echo "res[".$key."][\"index\"][".$numIng."] = \"".str_replace("'","",$ing)."\" ; "."\r\n" ;
+              $numIng++ ;
+          }
+
+      }
+
+      ?>
+      return res ;
+  }
+
+
+   function afficheRecettes(aliment){
+       var recettes = recupRecettes();
+       var hierarchie = tabDAliments();
+
+      for(var i = 0; i<=107; i++){
+
+          if(recettes[i]['index'].includes(aliment)){
+              $("#recettes").append($("<li>"+recettes[i]['titre']+"</li>").addClass("recette")) ;
+          }
+      }
+
+      // for(var key in hierarchie[aliment]["sous-categorie"]){
+      //     afficheRecettes(hierarchie[aliment]["sous-categorie"][key], recettes, hierarchie) ;
+      // }
+  }
 
        </script>
+
        <div >
 
 
        <label for="champ_recherche">Recherche par aliments:</label>
               <input type="search" id="champ_recherche" name="champ_recherche" autocomplete="on"
-                     aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste_data" >
+                     aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste" >
 
-              <datalist id = 'liste_data'>
+              <datalist id = 'liste'>
                     <?php
-                if(isset($Hierarchie)){
-                    $i=0;
-                   foreach ($Hierarchie as $element){
+
+                   foreach ($Hierarchie as $Key => $Value){
 
                       echo "<option>";
-                      echo array_keys($Hierarchie)[$i];
+                      echo "</br>".$Key;
                       echo "</option>";
-                      $i++;
+
                        }
 
-                  }
+
 
 
               ?>
