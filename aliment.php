@@ -38,7 +38,7 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
 
 
- <script>
+ <script id=barre_recherche>
 
  function tabDeRecettes(){
 
@@ -89,6 +89,9 @@ function tabDaliments(){
 
 
  function afficheRecettes(alim){
+   sessionStorage.setItem('key', alim);
+// Get saved data from sessionStorage
+var data = sessionStorage.getItem('key');
 
     var tableau_aliments = tabDaliments();
      var tableau_recettes = tabDeRecettes();
@@ -96,14 +99,14 @@ function tabDaliments(){
 
     for(var i = 0; i<=107; i++){
 
-        if(tableau_recettes[i]['index'].includes(alim)){
+        if(tableau_recettes[i]['index'].includes(data)){
             $("#recettes").append($("<li>"+tableau_recettes[i]['titre']+"</li>").addClass("recette"));
         }
     }
     console.log(alim) ;
-    for(var i in tableau_aliments[alim]['sous-categorie']){
+    for(var i in tableau_aliments[data]['sous-categorie']){
 
-        afficheRecettes(tableau_aliments[alim]['sous-categorie'][i],tableau_recettes,tableau_aliments);
+        afficheRecettes(tableau_aliments[data]['sous-categorie'][i],tableau_recettes,tableau_aliments);
 
     }
 }
@@ -115,7 +118,7 @@ function tabDaliments(){
 
        <label for="recherche">Recherche par aliments:</label>
               <input type="search" id="recherche" name="recherche" autocomplete="on"
-                     aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste" >
+                     aria-label="recherche " placeholder="Recherche" list="liste" >
 
               <datalist id = 'liste'>
                     <?php
