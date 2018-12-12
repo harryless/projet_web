@@ -39,52 +39,28 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
 
  <script>
- // var tab = new Array() ;
- //   <?php
- //                //   echo ""."\r\n" ;
- //
- //                    //$pos = 0 ;
- //                    foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
- //                        foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
- //                            foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
- //                                echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
- //                                echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
- //
- //                                if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie") {
- //                                    echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'][".$GLOBALS['key3']."] = \"".str_replace("'", "", $GLOBALS['value3'])."\" ;"."\r\n" ;
- //                                  //  $pos++ ;
- //                                  echo $GLOBALS['key1'];
- //                                }
- //                            }
- //                        }
- //                    }
- //
- //
- //                   echo "return tab"."\r\n" ;
- //
- //?>
 
+ function tabDeRecettes(){
 
- function recupRecettes(){
-    var res = new Array() ;
     <?php
-    $key=0;
-    while ($key<107) {
-        $key = key($Recettes) ;
-        echo "res[".$key."] = new Array()"."\r\n" ;
-        echo "res[".$key."][\"titre\"] = \"".str_replace("\"", '\"', $Recettes[$key]['titre'])."\" ; "."\r\n" ;
-
-        echo "res[".$key."][\"index\"] = new Array() ; "."\r\n" ;
-        $numIng = 0 ;
-        foreach ($Recettes[$key]['index'] as $ing) {
-            echo "res[".$key."][\"index\"][".$numIng."] = \"".str_replace("'", "", $ing)."\" ; "."\r\n" ;
-            $numIng++ ;
+          echo "var tab = new Array() ;"."\r\n" ;
+    foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
+        echo "tab[".$GLOBALS['key1']."] = new Array()"."\r\n" ;
+        echo "tab[".$GLOBALS['key1']."][\"index\"] = new Array() ; "."\r\n" ;
+        foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
+            if ($GLOBALS['key2']=="titre") {
+                echo "tab[".$GLOBALS['key1']."][\"titre\"] = \"".str_replace("\"", '\"', $GLOBALS['value2'])."\" ; "."\r\n" ;
+            }
+            foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
+                if ($GLOBALS['key2']=="index") {
+                    echo "tab[".$GLOBALS['key1']."][\"index\"][".$GLOBALS['key3']."] = \"".str_replace("'", "", $GLOBALS['value3'])."\" ; "."\r\n" ;
+                }
+            }
         }
-        next($Recettes) ;
     }
-
+ echo "return tab"."\r\n" ;
     ?>
-    return res ;
+
 }
 
 function tabDaliments(){
@@ -93,19 +69,14 @@ function tabDaliments(){
         echo "var tab = new Array() ;"."\r\n" ;
 
         foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-          echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
-                  echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
+            echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
+            echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
             foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
                 if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie") {
-                foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
-                    // echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
-                    // echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
-
-                      $tompo=$GLOBALS['value3'];
+                    foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
+                        $tompo=$GLOBALS['value3'];
 
                         echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'][".$GLOBALS['key3']."] = \"".str_replace("'", "", $tompo)."\" ;"."\r\n" ;
-                        //  $pos++ ;
-                                    //  echo $GLOBALS['key1'];
                     }
                 }
             }
@@ -117,19 +88,23 @@ function tabDaliments(){
 }
 
 
- function afficheRecettes(aliment){
-     var recettes = recupRecettes();
-     var hierarchie = tabDaliments();
+ function afficheRecettes(alim){
+
+    var tableau_aliments = tabDaliments();
+     var tableau_recettes = tabDeRecettes();
+
 
     for(var i = 0; i<=107; i++){
 
-        if(recettes[i]['index'].includes(aliment)){
-            $("#recettes").append($("<li>"+recettes[i]['titre']+"</li>").addClass("recette")) ;
+        if(tableau_recettes[i]['index'].includes(alim)){
+            $("#recettes").append($("<li>"+tableau_recettes[i]['titre']+"</li>").addClass("recette"));
         }
     }
-    console.log(aliment) ;
-    for(var key in hierarchie[aliment]['sous-categorie']){
-        afficheRecettes(hierarchie[aliment]['sous-categorie'][key], recettes, hierarchie) ;
+    console.log(alim) ;
+    for(var i in tableau_aliments[alim]['sous-categorie']){
+
+        afficheRecettes(tableau_aliments[alim]['sous-categorie'][i],tableau_recettes,tableau_aliments);
+
     }
 }
 
@@ -138,8 +113,8 @@ function tabDaliments(){
        <div >
 
 
-       <label for="champ_recherche">Recherche par aliments:</label>
-              <input type="search" id="champ_recherche" name="champ_recherche" autocomplete="on"
+       <label for="recherche">Recherche par aliments:</label>
+              <input type="search" id="recherche" name="recherche" autocomplete="on"
                      aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste" >
 
               <datalist id = 'liste'>
@@ -157,7 +132,7 @@ function tabDaliments(){
               ?>
               </datalist>
 
-              <button id ="bouton_recherche_recette" name = "bouton_recherche_recette" onclick="afficheRecettes(champ_recherche.value)">Rechercher</button>
+              <button  name = "bouton_recherche" onclick=" afficheRecettes(recherche.value) ">Rechercher</button>
               </div>
               <div id="recettes">
 
