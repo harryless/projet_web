@@ -23,17 +23,19 @@ foreach ($Hierarchie as $key1 =>$aliment) {
           echo        '<ul class="navbar-nav mr-auto">';
 
           echo            '<li class="nav-item dropdown">';
-          echo               '<a class="nav-link btn dropdown-toggle" id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'.$a.'</a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdown1">'; ?>
-    <script type="text/javascript">
+          echo               '<a class="nav-link btn dropdown-toggle" id="'.$a.'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'.$a.'</a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdown1">';
+    echo '<script>
 
-        $(".nav-link").click(function(){
+        $("#'.$a.'").click(function(){
             $("#recettes").html("");
-            afficheRecettes('<?php echo "$a"; ?>');
+            afficheRecettes("'.$a.'");
+            alert("'.$a.'");
         });
-    </script>
 
-    <?php
+    </script>';
+
+
                             foreach ($Hierarchie as $key1 =>$aliment) {
                                 foreach ($aliment as $key2 =>$value) {
                                     foreach ($value as $key3 => $tmp) {
@@ -42,13 +44,13 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                             <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp.'</a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdown1-1">'; ?>
-                            <script type="text/javascript">
+                            <!-- <script type="text/javascript">
 
                                 $(".dropdown-toggle").click(function(){
                                     $("#recettes").html("");
-                                    afficheRecettes('<?php echo "$tmp"; ?>');
+                                    afficheRecettes('');
                                 });
-                            </script>
+                            </script> -->
 
                             <?php
                                             foreach ($Hierarchie as $key11 =>$aliment) {
@@ -58,13 +60,13 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                                                             echo                       '<li class="dropdown-item dropdown">
                                     <a class="dropdown-toggle" id="dropdown1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp1.'</a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">'; ?>
-                                    <script type="text/javascript">
+                                    <!-- <script type="text/javascript">
 
-                                        $("#dropdown1-1-1").click(function(){
+                                        $(".dropdown-toggle").click(function(){
                                             $("#recettes").html("");
-                                            afficheRecettes('<?php echo "$tmp1"; ?>');
+                                            afficheRecettes('');
                                         });
-                                    </script>
+                                    </script> -->
 
                                     <?php
                                     foreach ($Hierarchie as $key111 =>$aliment) {
@@ -74,13 +76,13 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                                                     echo                                                '<li class="dropdown-item dropdown">
                                                             <a class="dropdown-toggle" id="dropdown1-1-1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp11.'</a>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">'; ?>
-                                                            <script type="text/javascript">
+                                                            <!-- <script type="text/javascript">
 
-                                                                $("#dropdown1-1-1-1").click(function(){
+                                                                $(".dropdown-toggle").click(function(){
                                                                     $("#recettes").html("");
-                                                                    afficheRecettes('<?php echo "$tmp11"; ?>');
+                                                                    afficheRecettes('');
                                                                 });
-                                                            </script>
+                                                            </script> -->
 
                                                             <?php
                                                             foreach ($Hierarchie as $key1111 =>$aliment) {
@@ -90,13 +92,13 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                                                                             echo                                                                    '<li class="dropdown-item dropdown">
                                                             <a class="dropdown-toggle" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp111.'</a>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">'; ?>
-                                                            <script type="text/javascript">
+                                                            <!-- <script type="text/javascript">
 
-                                                                $(".dropdown2").click(function(){
+                                                                $(".dropdown-toggle").click(function(){
                                                                     $("#recettes").html("");
-                                                                    afficheRecettes('<?php echo "$tmp111"; ?>');
+                                                                    afficheRecettes('');
                                                                 });
-                                                            </script>
+                                                            </script> -->
 
                                                             <?php
                                                             foreach ($Hierarchie as $key11111 =>$aliment) {
@@ -104,13 +106,13 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                                                                     foreach ($value as $key33333 => $tmp1111) {
                                                                         if ($key11111==$tmp111 && $key22222=="sous-categorie") {
                                                                             echo                  '<li id="dropdown2-2">'.$tmp1111.'</li>'; ?>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
 
         $("#dropdown2-2").click(function(){
             $("#recettes").html("");
-            afficheRecettes('<?php echo "$tmp1111"; ?>');
+            afficheRecettes('');
         });
-    </script>
+    </script> -->
 
     <?php
                                                                         }
@@ -184,9 +186,11 @@ function tabDaliments(){
 
     foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
         echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
-        echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
+
         foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-            if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie") {
+            if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie" && sizeof($GLOBALS['value2']) > 0) {
+
+                echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
                 foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
                     $tompo=$GLOBALS['value3'];
 

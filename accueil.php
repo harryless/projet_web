@@ -1,4 +1,4 @@
-<?php session_start( ); ?>
+<?php session_start(); ?>
 <?php include 'Donnees.inc.php'; ?>
 
 <!DOCTYPE html>
@@ -32,7 +32,7 @@
 
       function tabDeRecettes(){
 
-        <?php
+         <?php
               echo "var tab = new Array() ;"."\r\n" ;
         foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
             echo "tab[".$GLOBALS['key1']."] = new Array()"."\r\n" ;
@@ -49,7 +49,8 @@
             }
         }
       echo "return tab"."\r\n" ;
-        ?>
+      ?>
+
 
       }
 
@@ -60,9 +61,11 @@
 
             foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
                 echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
-                echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
+              //  echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
                 foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-                    if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie") {
+
+                    if ($GLOBALS['key1'] != "Aliment" && !empty($GLOBALS['value2']  && $GLOBALS['key2']=="sous-categorie") ) {
+                                      echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
                         foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
                             $tompo=$GLOBALS['value3'];
 
@@ -74,28 +77,15 @@
 
 
                  echo "return tab"."\r\n" ;
+
         ?>
       }
-      function tabDeRecettesPourPhotos(){
 
-        <?php
-              echo "var tab = new Array() ;"."\r\n" ;
-        foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-            echo "tab[".$GLOBALS['key1']."] = new Array()"."\r\n" ;
-            foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-                if ($GLOBALS['key2']=="titre") {
-                    echo "tab[".$GLOBALS['key1']."][\"titre\"] = \"".str_replace("\"", '\"', $GLOBALS['value2'])."\" ; "."\r\n" ;
-                }
-
-            }
-        }
-      echo "return tab"."\r\n" ;
-        ?>
-
-      }
 
 
       function afficheRecettes(alim){
+
+
 
         var tableau_aliments = tabDaliments();
          var tableau_recettes = tabDeRecettes();
@@ -132,14 +122,13 @@
 
             }
         }
-
         for(var i in tableau_aliments[alim]['sous-categorie']){
 
             afficheRecettes(tableau_aliments[alim]['sous-categorie'][i],tableau_recettes,tableau_aliments);
 
         }
-      }
 
+}
 
 
            </script>
@@ -172,7 +161,7 @@
 
 
       <div id="recettes" class="container row mx-auto border border-danger" style="background:rgba(0,0,0, 0.5)">
-  
+
         <?php
         // foreach ($Recettes as $recette){
         //   $titre = $recette['titre'];
@@ -181,7 +170,7 @@
         //   $photo = "Photos/".$photo.".jpg";
         //   $title = explode('(',$titre);
         //
-      	//    if (file_exists(''.$photo)) {
+          //    if (file_exists(''.$photo)) {
         //     echo "<li class='row mt-2 mb-2 mx-auto list-group'>";
         //     echo  "<div class='text-center' id='produitAffiche1'>
         //             <ul class='list-group-item'>
@@ -196,32 +185,30 @@
         // }
 
           if (isset($_SESSION['login'])) {
-            $login=$_SESSION['login'];
-            if (isset($_GET['titre'])) {
+              $login=$_SESSION['login'];
+              if (isset($_GET['titre'])) {
+                  $titreRecette=$_GET['titre'];
+                  $database= new PDO('mysql:host=localhost;dbname=projetBoissons', 'root', 'root');
+                  $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
+                  $res=$database->query($idUtilisateur)->fetch();
+                  $id_user=$res['id_utilisateur'];
 
-              $titreRecette=$_GET['titre'];
-              $database= new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
-              $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
-              $res=$database->query($idUtilisateur)->fetch();
-              $id_user=$res['id_utilisateur'];
-
-              //on verifier si on a pas deja la recette dans le panier
-              $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
-              $recetteExisteFin=$database->query($recetteExiste)->fetch();
-              if ($recetteExisteFin['nbrRecette']>0) {
-                echo "
+                  //on verifier si on a pas deja la recette dans le panier
+                  $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
+                  $recetteExisteFin=$database->query($recetteExiste)->fetch();
+                  if ($recetteExisteFin['nbrRecette']>0) {
+                      echo "
 
                 ";
-              }else{
-                $database->query("INSERT INTO recette(titre,id_utilisateur)
+                  } else {
+                      $database->query("INSERT INTO recette(titre,id_utilisateur)
                 VALUES('$titreRecette','$id_user')");
-                echo "<meta http-equiv='refresh' content='0;URL=accueil.php'>";
+                      echo "<meta http-equiv='refresh' content='0;URL=accueil.php'>";
+                  }
               }
-
-          }
-        }elseif (isset($_GET['titre'])) {
-          echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
-        } {
+          } elseif (isset($_GET['titre'])) {
+              echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
+          } {
 
       }
       ?>

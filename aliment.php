@@ -38,86 +38,83 @@ echo "bonjour monsieur  : ".$_SESSION['nom']." ".$_SESSION['prenom'];
 
 
 
- <script id=barre_recherche>
 
- function tabDeRecettes(){
 
-    <?php
-          echo "var tab = new Array() ;"."\r\n" ;
-    foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-        echo "tab[".$GLOBALS['key1']."] = new Array()"."\r\n" ;
-        echo "tab[".$GLOBALS['key1']."][\"index\"] = new Array() ; "."\r\n" ;
-        foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-            if ($GLOBALS['key2']=="titre") {
-                echo "tab[".$GLOBALS['key1']."][\"titre\"] = \"".str_replace("\"", '\"', $GLOBALS['value2'])."\" ; "."\r\n" ;
-            }
-            foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
-                if ($GLOBALS['key2']=="index") {
-                    echo "tab[".$GLOBALS['key1']."][\"index\"][".$GLOBALS['key3']."] = \"".str_replace("'", "", $GLOBALS['value3'])."\" ; "."\r\n" ;
-                }
-            }
-        }
-    }
- echo "return tab"."\r\n" ;
-    ?>
-
-}
-
-function tabDaliments(){
 
     <?php
-        echo "var tab = new Array() ;"."\r\n" ;
-
+    //on trouve tout les sous-categorie d'aliment recherche
+    function getSousCategorie($aliment)
+    {
         foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-            echo "tab[\"".$GLOBALS['key1']."\"] = new Array() ;"."\r\n" ;
-            echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'] = new Array() ;"."\r\n" ;
+          if ($GLOBALS['key1'] == $aliment){
             foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-                if ($GLOBALS['key1'] != "Aliment" && $GLOBALS['key2']=="sous-categorie") {
+                if ( $GLOBALS['key2']=="sous-categorie") {
                     foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
-                        $tompo=$GLOBALS['value3'];
+                    //  echo $GLOBALS['value3']."</br>";
+                      $tab[]=$GLOBALS['value3'];
+                      $tab[]=  getSousCategorie($GLOBALS['value3']);
+                        //
 
-                        echo "tab[\"".$GLOBALS['key1']."\"]['sous-categorie'][".$GLOBALS['key3']."] = \"".str_replace("'", "", $tompo)."\" ;"."\r\n" ;
+
                     }
                 }
             }
         }
+}
+          return $tab;
+    }
+  //  var_dump($tab=getSousCategorie("Partie de citron"));
+    //=getSousCategorie($aliment);
+    $tab=getSousCategorie("Partie de citron");
+    foreach ($tab as $key => $value) {
+    //  echo $value;
+      //foreach ($value as $key1 => $value1) {
+      //  afficher_titre_recettes($value1);
+
+    //  }
+    }
+
+      function afficher_titre_recettes($aliment)
+      {
+          foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
+              foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
+                  foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
+                      if ($GLOBALS['value3']==$aliment) {
+                          echo $GLOBALS['value1']['titre']."</br>";
+                      }
+                  }
+              }
+          }
+      }
+
+function trouver_recettes($aliment){
+    afficher_titre_recettes($aliment);
 
 
-             echo "return tab"."\r\n" ;
+    foreach (getSousCategorie($aliment) as $key => $value) {
+        afficher_titre_recettes($value);
+
+      foreach ($value as $key1 => $value1) {
+        afficher_titre_recettes($value1);
+      }
+    }
+
+
+}
+
+//trouver_recettes("Épice commune");
+
     ?>
-}
 
 
- function afficheRecettes(alim){
-   sessionStorage.setItem('key', alim);
-// Get saved data from sessionStorage
-var data = sessionStorage.getItem('key');
-
-    var tableau_aliments = tabDaliments();
-     var tableau_recettes = tabDeRecettes();
-
-
-    for(var i = 0; i<=107; i++){
-
-        if(tableau_recettes[i]['index'].includes(data)){
-            $("#recettes").append($("<li>"+tableau_recettes[i]['titre']+"</li>").addClass("recette"));
-        }
-    }
-    console.log(alim) ;
-    for(var i in tableau_aliments[data]['sous-categorie']){
-
-        afficheRecettes(tableau_aliments[data]['sous-categorie'][i],tableau_recettes,tableau_aliments);
-
-    }
-}
-
-       </script>
 
        <div >
 
 
-       <label for="recherche">Recherche par aliments:</label>
-              <input type="search" id="recherche" name="recherche" autocomplete="on"
+         <form class="" action="#" method="post">
+
+
+              <input type="search"  name="recherche" autocomplete="on"
                      aria-label="recherche " placeholder="Recherche" list="liste" >
 
               <datalist id = 'liste'>
@@ -135,11 +132,19 @@ var data = sessionStorage.getItem('key');
               ?>
               </datalist>
 
-              <button  name = "bouton_recherche" onclick=" afficheRecettes(recherche.value) ">Rechercher</button>
-              </div>
-              <div id="recettes">
+              <button class="btn btn-primary" type="submit" name="bouton_recherche">rechercher</button>
+                 </form>
+              <?php
+                if (isset($_POST['bouton_recherche'])) {
 
-      </div>
+            trouver_recettes($_POST['recherche']);
+
+                }
+               ?>
+
+
+              </div>
+
 
 
   </body>
