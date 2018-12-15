@@ -18,8 +18,6 @@
     <?php
     include 'header.php';
      ?>
-
-
     <body class="bg-dark text-white" style="background:url(background1.jpg);background-size:cover">
 
 
@@ -29,94 +27,88 @@
       ?>
 
       <script id=barre_recherche>
+          <?php include 'trouver_recette.php' ?>
+      </script>
 
-  <?php
-  include 'trouver_recette.php' ?>
-
-
-
-           </script>
-
-           <div >
-
-
-           <label for="recherche">Recherche par aliments:</label>
-                  <input type="search" id="recherche" name="recherche" autocomplete="on"
-                         aria-label="recherche par aliments" placeholder="Recherche par aliments" list="liste" >
-
+           <div class="input-group mb-3" >
+           <label for="recherche"  > </label>
+              <input type="search" id="recherche" name="recherche" autocomplete="on" aria-label="recherche" placeholder="Recherche " list="liste" >
                   <datalist id = 'liste'>
                         <?php
 
-                       foreach ($Hierarchie as $Key => $Value) {
-                           echo "<option>";
-                           echo "</br>".$Key;
-                           echo "</option>";
-                       }
-
-
-
-
-                  ?>
+                             foreach ($Hierarchie as $Key => $Value) {
+                                 echo "<option>";
+                                 echo "</br>".$Key;
+                                 echo "</option>";
+                             }
+                        ?>
                   </datalist>
 
-                  <button  name = "bouton_recherche" onclick=" afficheRecettes(recherche.value) ">Rechercher</button>
-                  </div>
+                  <button  name = "bouton_recherche" id ="rc" class="btn btn-primary" type="submit">Rechercher</button>
+                      <script type="text/javascript">
+                          $("#rc").click(function(){
+                              $("#recettes").html("");
+                              trouverRecettes(recherche.value) ;
+                          });
+                      </script>
+
+          </div>
 
 
 
-      <div id="recettes" class="container row mx-auto border border-danger" style="background:rgba(0,0,0, 0.5)">
+          <div id="recettes" class="container row mx-auto border border-danger" style="background:rgba(0,0,0, 0.5)">
 
-        <?php
-        // foreach ($Recettes as $recette){
-        //   $titre = $recette['titre'];
-        //   $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
-        //   $photo = str_replace(" ", "_",$photo);
-        //   $photo = "Photos/".$photo.".jpg";
-        //   $title = explode('(',$titre);
-        //
-          //    if (file_exists(''.$photo)) {
-        //     echo "<li class='row mt-2 mb-2 mx-auto list-group'>";
-        //     echo  "<div class='text-center' id='produitAffiche1'>
-        //             <ul class='list-group-item'>
-        //               <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>
-        //             </ul>
-        //             <p class='mx-auto' style='width:200px;'>$title[0]</p>
-        //             <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title=$titre'><i class='fas fa-info-circle'></i> Info</a>
-        //             <a class='w-100 btn btn-outline-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
-        //     echo "</div></li>";
-        //     }
-        //
-        // }
+            <?php
+            // foreach ($Recettes as $recette){
+            //   $titre = $recette['titre'];
+            //   $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+            //   $photo = str_replace(" ", "_",$photo);
+            //   $photo = "Photos/".$photo.".jpg";
+            //   $title = explode('(',$titre);
+            //
+              //    if (file_exists(''.$photo)) {
+            //     echo "<li class='row mt-2 mb-2 mx-auto list-group'>";
+            //     echo  "<div class='text-center' id='produitAffiche1'>
+            //             <ul class='list-group-item'>
+            //               <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>
+            //             </ul>
+            //             <p class='mx-auto' style='width:200px;'>$title[0]</p>
+            //             <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title=$titre'><i class='fas fa-info-circle'></i> Info</a>
+            //             <a class='w-100 btn btn-outline-danger' href='accueil.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
+            //     echo "</div></li>";
+            //     }
+            //
+            // }
 
-          if (isset($_SESSION['login'])) {
-              $login=$_SESSION['login'];
-              if (isset($_GET['titre'])) {
-                  $titreRecette=$_GET['titre'];
-                  $database= new PDO('mysql:host=localhost;dbname=projetBoissons', 'root', 'root');
-                  $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
-                  $res=$database->query($idUtilisateur)->fetch();
-                  $id_user=$res['id_utilisateur'];
+              if (isset($_SESSION['login'])) {
+                  $login=$_SESSION['login'];
+                  if (isset($_GET['titre'])) {
+                      $titreRecette=$_GET['titre'];
+                      $database= new PDO('mysql:host=localhost;dbname=projetBoissons', 'root', 'root');
+                      $idUtilisateur="SELECT id_utilisateur FROM utilisateur WHERE login like '$login'";
+                      $res=$database->query($idUtilisateur)->fetch();
+                      $id_user=$res['id_utilisateur'];
 
-                  //on verifier si on a pas deja la recette dans le panier
-                  $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
-                  $recetteExisteFin=$database->query($recetteExiste)->fetch();
-                  if ($recetteExisteFin['nbrRecette']>0) {
-                      echo "
+                      //on verifier si on a pas deja la recette dans le panier
+                      $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
+                      $recetteExisteFin=$database->query($recetteExiste)->fetch();
+                      if ($recetteExisteFin['nbrRecette']>0) {
+                          echo "
 
-                ";
-                  } else {
-                      $database->query("INSERT INTO recette(titre,id_utilisateur)
-                VALUES('$titreRecette','$id_user')");
-                      echo "<meta http-equiv='refresh' content='0;URL=accueil.php'>";
+                    ";
+                      } else {
+                          $database->query("INSERT INTO recette(titre,id_utilisateur)
+                    VALUES('$titreRecette','$id_user')");
+                          echo "<meta http-equiv='refresh' content='0;URL=accueil.php'>";
+                      }
                   }
-              }
-          } elseif (isset($_GET['titre'])) {
-              echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
-          } {
+              } elseif (isset($_GET['titre'])) {
+                  echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
+              } {
 
-      }
-      ?>
-      </div>
+          }
+          ?>
+          </div>
 
     </body>
     <footer class="container mt-2 border border-danger"style="background:rgb(0,0,0,0.5);height:100px;">

@@ -133,6 +133,10 @@ function trouver_recettes($aliment){
               </datalist>
 
               <button class="btn btn-primary" type="submit" name="bouton_recherche">rechercher</button>
+<script type="text/javascript">
+    $("#recettes").html("");
+</script>
+
                  </form>
               <?php
                 if (isset($_POST['bouton_recherche'])) {

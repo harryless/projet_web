@@ -70,7 +70,7 @@ if( tableau_recettes[i]['index'].includes(alim) )
 {
     var photo;
     var titre;
-    var title
+
   //foreach ($Recettes as $recette){
     titre = tableau_recettes[i]['titre'];
   //  title = explode('(',titre);
