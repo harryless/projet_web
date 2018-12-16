@@ -1,9 +1,7 @@
-<header class="container mb-2 border border-danger"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
-  <!-- div des deux bouttons favoris et aliments -->
+<header class="container mb-2  "style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
   <div class="row justify-content-between ">
     <div class="btn-group col-4">
-      <a class="btn btn-link"  href="aliment.php"><i class="fas fa-cocktail"></i> Les aliments</a>
-      <a class="btn btn-link"  href="Accueil.php"><i class="fas fa-home"></i> Accueil</a>
+      <a class="btn btn-link"  href="home.php"><i class="fas fa-home"></i> Accueil</a>
       <?php
         if (isset($_SESSION['nom']) && isset($_SESSION['prenom'])) {
           $login=$_SESSION['login'];
@@ -34,7 +32,8 @@
             echo "<i class='far fa-user'></i> Login";
             echo "</button>
             <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
-                <a class='dropdown-item' href='login.php'><i class='fas fa-sign-out-alt'></i>Connexion</a>
+                <a class='dropdown-item' href='login.php'><i class='fas fa-sign-out-alt'></i> Connexion</a>
+                <a class='dropdown-item' href='register.php'><i class='fas fa-edit'></i> Inscription</a>
             </div>";
         }
       ?>
@@ -42,6 +41,6 @@
     </div>
   </div>
   <div  class="">
-    <h1><i class="fas fa-cocktail"></i>Les Recettes du moment</h1>
+    <h1><i class="fas fa-cocktail"></i> The Drink Inn</h1>
   </div>
 </header>

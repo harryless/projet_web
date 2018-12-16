@@ -1,3 +1,12 @@
+<?php
+    session_start( );
+
+    if($_SESSION['connected'] == true){
+        header('Location: /projet_web/home.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,13 +23,13 @@
         <header class="container mb-2"style="background:rgb(0,0,0,0.5);height:100px;text-align:center;">
             <h1 style="padding-top:10px;">Inscription</h1>
             <div class="btn-group">
-                  <a class="btn btn-link"  href="accueil.php"><i class="fas fa-home"></i> Accueil</a>
+                  <a class="btn btn-link"  href="home.php"><i class="fas fa-home"></i> Accueil</a>
                   <a class="btn btn-link"  href="login.php"><i class="fas fa-sign-in-alt"></i> Connexion</a>
             </div>
         </header>
 
         <div class="container mx-auto" style="background:rgba(0, 0, 0,0.5)" >
-            <form class="row" method="post" action="inscription.php">
+            <form class="row" method="post" action="register.php">
                 <div class="form-group col" >
                     <legend>Votre identifiant </legend>
                     <label for="login">Login </label>

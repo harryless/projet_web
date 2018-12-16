@@ -2,7 +2,7 @@
     session_start( );
 
     if($_SESSION['connected'] == true){
-        header('Location: /projet_web/accueil.php');
+        header('Location: /projet_web/home.php');
         exit();
     }
 ?>
@@ -23,7 +23,7 @@
         <header class="container text-white text-center mb-5" style="height:100px;background:rgba(0, 0, 0,0.5)">
             <h1>Connexion</h1>
             <div class="btn-group">
-                  <a class="btn btn-link"  href="accueil.php"><i class="fas fa-home"></i> Accueil</a>
+                  <a class="btn btn-link"  href="home.php"><i class="fas fa-home"></i> Accueil</a>
                   <a class="btn btn-link"  href="register.php"><i class="fas fa-edit"></i> Inscription</a>
             </div>
         </header>
@@ -58,7 +58,7 @@
                     $_SESSION['nom']=$row['nom'];
                     $_SESSION['prenom'] = $row['prenom'];
                     $_SESSION['login'] = $row['login'];
-                    header('Location: /projet_web/accueil.php');
+                    header('Location: /projet_web/home.php');
                     exit();
                 }else {
                     $_SESSION['error'] = '<div class="text-center"><p>Correspondance Login/mot de passe incorrecte</p></div>';

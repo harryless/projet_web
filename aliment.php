@@ -18,7 +18,7 @@
 
   aliments
 </br></br></br></br>
-<a href="accueil.php"> retourner a la page d 'accueil </a>
+<a href="home.php"> retourner a la page d 'accueil </a>
 </br></br></br></br>
 
 <?php

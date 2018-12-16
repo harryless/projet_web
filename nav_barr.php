@@ -18,7 +18,7 @@ foreach ($Hierarchie as $key1 =>$aliment) {
 
     ?>
     <?php
-    echo '<div class="navbar navbar-expand-md border border-danger navbar-dark mb-4 container" role="navigation" style="background:rgba(0,0,0,0.5)">';
+    echo '<div class="navbar navbar-expand-md  navbar-dark mb-4 container" role="navigation" style="background:rgba(0,0,0,0.5)">';
 
       foreach ($tabAliments as $key =>$a) {
           echo    '<div class="collapse navbar-collapse" id="navbarCollapse">';
@@ -310,7 +310,7 @@ for(var i = 0; i<= taille_tab;i++){
         "   </ul>"+
         "   <p class='mx-auto' style='width:200px;'>"+titre+"</p>"+
         "   <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title="+titre+"'><i class='fas fa-info-circle'></i> Info</a>"+
-        "    <a class='w-100 btn btn-outline-danger' href='accueil.php?titre="+titre+"'><i class='far fa-thumbs-up'></i> Favoris</a> "+
+        "    <a class='w-100 btn btn-outline-danger' href='home.php?titre="+titre+"'><i class='far fa-thumbs-up'></i> Favoris</a> "+
         " </div></li>"
 
 

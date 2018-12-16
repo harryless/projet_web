@@ -73,18 +73,19 @@ if( tableau_recettes[i]['index'].includes(alim) )
 
   //foreach ($Recettes as $recette){
     titre = tableau_recettes[i]['titre'];
-  //  title = explode('(',titre);
+    photo = titre.replace(" ", "_");
+    
 
       $("#recettes").append(
 
   "<li class='row mt-2 mb-2 mx-auto list-group'>"
     +"<div class='text-center' id='produitAffiche1'>"+
       "   <ul class='list-group-item'>"+
-      "      <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>"+
+      "      <img class='img-rounded zoom ' src='Photos/"+photo+".jpg' width='150' height='150'/>"+
       "   </ul>"+
       "   <p class='mx-auto' style='width:200px;'>"+titre+"</p>"+
       "   <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title="+titre+"'><i class='fas fa-info-circle'></i> Info</a>"+
-      "    <a class='w-100 btn btn-outline-danger' href='accueil.php?titre="+titre+"'><i class='far fa-thumbs-up'></i> Favoris</a> "+
+      "    <a class='w-100 btn btn-outline-danger' href='home.php?titre="+titre+"'><i class='far fa-thumbs-up'></i> Favoris</a> "+
       " </div></li>"
 
 
