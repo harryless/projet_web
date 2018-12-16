@@ -47,28 +47,9 @@
 
 
           <div id="recettes" class="container row mx-auto " style="background:rgba(0,0,0, 0.5)">
-
+              <div class="row mx-auto "> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div>
             <?php
-            // foreach ($Recettes as $recette){
-            //   $titre = $recette['titre'];
-            //   $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
-            //   $photo = str_replace(" ", "_",$photo);
-            //   $photo = "Photos/".$photo.".jpg";
-            //   $title = explode('(',$titre);
-            //
-            //      if (file_exists(''.$photo)) {
-            //     echo "<li class='row mt-2 mb-2 mx-auto list-group'>";
-            //     echo  "<div class='text-center' id='produitAffiche1'>
-            //             <ul class='list-group-item'>
-            //               <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>
-            //             </ul>
-            //             <p class='mx-auto' style='width:200px;'>$title[0]</p>
-            //             <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title=$titre'><i class='fas fa-info-circle'></i> Info</a>
-            //             <a class='w-100 btn btn-outline-danger' href='home.php?titre=$titre'><i class='far fa-thumbs-up'></i> Favoris</a> ";
-            //     echo "</div></li>";
-            //     }
-            //
-            // }
+
 
             $db = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
                     $sql = "SELECT r.id_utilisateur,u.id_utilisateur,r.titre,u.login FROM recette r,utilisateur u where r.id_utilisateur=u.id_utilisateur   ;";
@@ -83,9 +64,9 @@
 
                     echo "<div class='row col-12'>";
                     foreach($users_choices as $user=>$choices){
-                      echo "<div class='col-6'>";
+                      echo "<div class='container row mx-auto  col-10  alert alert-dark' role='alert' style='background:rgba(0,0,0, 0.5)'>";
 
-                              echo $user;
+                              echo "<i class=' text-danger fas fa-user'> $user </i>";
                         foreach($choices as $choice){
                            $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $choice );
                            $photo = str_replace(" ", "_",$photo);
@@ -93,7 +74,7 @@
                           echo "<li class='mt-2 mb-2 mx-auto list-group'>
                                   <div class='text-center' id='produitAffiche1'>
                                       <ul class='list-group-item'>
-                                        <img class='img-rounded zoom ' src='$photo' width='60' height='60'/>
+                                        <img class='img-rounded zoom ' src='$photo' width='100' height='100'/>
                                       </ul>
 
                                       <a class='w-60 btn btn-outline-warning' href='infoRecette.php?title=$choice'><i class='fas fa-info-circle'></i> Info</a>
