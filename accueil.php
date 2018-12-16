@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
     </head>
     <?php
-    include 'header.php';
+        include 'header.php';
      ?>
-    <body class="bg-dark text-white" style="background:url(background1.jpg);background-size:cover">
+    <body class="bg-dark text-white" style="background:url(img/bg.jpg);background-size:cover">
 
 
       <?php
@@ -30,7 +30,7 @@
           <?php include 'trouver_recette.php' ?>
       </script>
 
-           <div class="input-group mb-3" >
+           <div class=" pull-right" >
            <label for="recherche"  > </label>
               <input type="search" id="recherche" name="recherche" autocomplete="on" aria-label="recherche" placeholder="Recherche " list="liste" >
                   <datalist id = 'liste'>
@@ -80,6 +80,7 @@
             //
             // }
 
+
               if (isset($_SESSION['login'])) {
                   $login=$_SESSION['login'];
                   if (isset($_GET['titre'])) {
@@ -103,10 +104,13 @@
                       }
                   }
               } elseif (isset($_GET['titre'])) {
-                  echo "<meta http-equiv='refresh' content='0;URL=connexion.php'>";
+                  echo "<meta http-equiv='refresh' content='0;URL=login.php'>";
               } {
 
           }
+
+      1975
+
           ?>
           </div>
 
