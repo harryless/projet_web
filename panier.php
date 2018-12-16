@@ -19,7 +19,7 @@
   <?php
   include 'header.php';
    ?>
-    <body class="bg-dark text-white" style="background:url(background.jpg);background-size:cover">
+    <body class="bg-dark text-white" style="background:url(img/bg.jpg);background-size:cover">
       <div class="container row mx-auto" style="background:rgba(0,0,0, 0.5)">
         <?php
         $login=$_SESSION['login'];
@@ -37,9 +37,9 @@
 
         if ($row['titre']==$recette['titre']) {
 
-             $titre = $recette['titre'];
+
              $idrecette = $row['id_recette'];
-             $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+             $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $recette['titre'] );
              $photo = str_replace(" ","_",$photo);
              $photo = "Photos/".$photo.".jpg";
            echo "<li class='row mt-5 mb-5 mx-auto list-group' id='$idrecette'>";
@@ -47,8 +47,8 @@
                       <ul class='list-group-item'>
                       <img class='img-rounded zoom' src='$photo' width='150' height='150'/>
                       </ul>
-                      <p class='mx-auto' style='width:200px;'>$titre</p>
-                      <a class='w-100 btn btn-warning' id='supp' href='panier.php?titre=$titre'>
+                      <p class='mx-auto' style='width:200px;'>".$recette['titre']."</p>
+                      <a class='w-100 btn btn-warning' id='supp' href='panier.php?titre=".$recette['titre']."'>
                       <i class='far fa-trash-alt'></i> supprimer
                       </a>";
              echo "</div>";

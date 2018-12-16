@@ -27,7 +27,7 @@ foreach ($Hierarchie as $key1 =>$aliment) {
           echo            '<li class="nav-item dropdown">';
           echo               '<a class="nav-link btn dropdown-toggle" id="'.$key.'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >'.$a.'</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown1">';
-            echo '                <script type="text/javascript">
+            echo               ' <script type="text/javascript">
                                     $("#'.$key.'").click(function(){
                                         $("#recettes").html("");
                                     trouverRecettes("'.$a.'");
@@ -94,7 +94,7 @@ foreach ($Hierarchie as $key1 =>$aliment) {
                                                                     foreach ($value as $key3333 => $tmp111) {
                                                                         $t3++;
                                                                         if ($key1111==$tmp11 && $key2222=="sous-categorie") {
-                                                                            echo                                                                    '<li class="dropdown-item dropdown">
+                                                                            echo   '<li class="dropdown-item dropdown">
                                                             <a class="dropdown-toggle" id="'.$t3.'" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'.$tmp111.'</a>
                                                             <ul class="dropdown-menu" aria-labelledby="dropdown1-1-1">';
                                                             echo '                <script type="text/javascript">
@@ -160,71 +160,6 @@ foreach ($Hierarchie as $key1 =>$aliment) {
         echo"</div>";
 ?>
 
-<?php
-//on trouve tout les sous-categorie d'aliment recherche
-function getSousCategorie($aliment)
-{
-foreach ($GLOBALS['Hierarchie'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-  if ($GLOBALS['key1'] == $aliment){
-    foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-        if ( $GLOBALS['key2']=="sous-categorie") {
-            foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
-            //  echo $GLOBALS['value3']."</br>";
-              $tab[]=$GLOBALS['value3'];
-              $tab[]=  getSousCategorie($GLOBALS['value3']);
-                //
-
-
-            }
-        }
-    }
-}
-}
-  return $tab;
-}
-
-function afficher_titre_recettes($aliment)
-{
-  foreach ($GLOBALS['Recettes'] as $GLOBALS['key1'] =>  $GLOBALS['value1']) {
-      foreach ($GLOBALS['value1'] as $GLOBALS['key2']  => $GLOBALS['value2']) {
-          foreach ($GLOBALS['value2'] as $GLOBALS['key3'] => $GLOBALS['value3']) {
-              if ($GLOBALS['value3']==$aliment) {
-                 echo $GLOBALS['value1']['titre']."</br>";
-              }
-          }
-      }
-  }
-  return $tab;
-}
-
-function trouver_recettes($aliment){
-afficher_titre_recettes($aliment);
-
-
-foreach (getSousCategorie($aliment) as $key => $value) {
-afficher_titre_recettes($value);
-
-foreach ($value as $key1 => $value1) {
-afficher_titre_recettes($value1);
-}
-}
-
-}
-
-//trouver_recettes("Épice commune");
-
-?>
-
-<div id="contenu">
-
-
-
-</div>
-
-
-
-
-
 
 <script type="text/javascript">
 
@@ -276,6 +211,7 @@ function tabDaliments(){
 
        echo "return tab"."\r\n" ;
 
+
 ?>
 }
 
@@ -287,26 +223,25 @@ function trouverRecettes(alim){
 
 var tableau_aliments = tabDaliments();
 var tableau_recettes = tabDeRecettes();
-var taille_tab=107;
+var taille =  107;
 
 
-for(var i = 0; i<= taille_tab;i++){
 
-  if( tableau_recettes[i]['index'].includes(alim) )
-  {
+for(var i = 0; i<= taille;i++){
+
+  if( tableau_recettes[i]['index'].includes(alim) ){
       var photo;
       var titre;
-      var title
-    //foreach ($Recettes as $recette){
+
       titre = tableau_recettes[i]['titre'];
-    //  title = explode('(',titre);
+      photo = titre.replace(" ", "_");
 
         $("#recettes").append(
 
     "<li class='row mt-2 mb-2 mx-auto list-group'>"
       +"<div class='text-center' id='produitAffiche1'>"+
         "   <ul class='list-group-item'>"+
-        "      <img class='img-rounded zoom ' src='$photo' width='150' height='150'/>"+
+        "      <img class='img-rounded zoom ' src='Photos/"+photo+".jpg' width='150' height='150'/>"+
         "   </ul>"+
         "   <p class='mx-auto' style='width:200px;'>"+titre+"</p>"+
         "   <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title="+titre+"'><i class='fas fa-info-circle'></i> Info</a>"+

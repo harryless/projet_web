@@ -22,8 +22,6 @@
       <?php include 'header.php'; ?>
       <?php include 'nav_barr.php'; ?>
 
-      <?php include 'trouver_recette.php' ?>
-
       <div class="input-group mb-3 container row mx-auto " >
            <label for="recherche"  > </label>
            <input type="search" id="recherche" name="recherche" autocomplete="on" aria-label="recherche" placeholder="Recherche " list="liste" >
@@ -89,7 +87,7 @@
 
                               echo $user;
                         foreach($choices as $choice){
-                           $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+                           $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $choice );
                            $photo = str_replace(" ", "_",$photo);
                            $photo = "Photos/".$photo.".jpg";
                           echo "<li class='mt-2 mb-2 mx-auto list-group'>
@@ -107,14 +105,6 @@
                     echo '</div>';
 
 
-
-                    /*while ($row = $results->fetch()) {
-
-                        echo $row['login']." : ".$row['titre']."</br> ";
-
-                      }
-                      */
-
               if (isset($_SESSION['login'])) {
                   $login=$_SESSION['login'];
                   if (isset($_GET['titre'])) {
@@ -127,9 +117,7 @@
                       $recetteExiste = "SELECT COUNT(id_recette) AS nbrRecette FROM recette WHERE id_utilisateur like '$id_user' AND titre like '$titreRecette' " ;
                       $recetteExisteFin=$database->query($recetteExiste)->fetch();
                       if ($recetteExisteFin['nbrRecette']>0) {
-                          echo "
-
-                    ";
+                          echo " recette deja ajoutee aux favoris";
                       } else {
                           $db->query("INSERT INTO recette(titre,id_utilisateur)
                     VALUES('$titreRecette','$id_user')");
@@ -142,7 +130,7 @@
 
           }
 
-      1975
+
 
           ?>
           </div>

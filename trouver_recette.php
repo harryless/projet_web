@@ -66,22 +66,21 @@ var tableau_recettes = tabDeRecettes();
 
 for(var i = 0; i<= 107;i++){
 
-if( tableau_recettes[i]['index'].includes(alim) )
-{
+if( tableau_recettes[i]['index'].includes(alim) ){
     var photo;
     var titre;
 
   //foreach ($Recettes as $recette){
     titre = tableau_recettes[i]['titre'];
-    photo = titre.replace(" ", "_");
-    
+  //  photo = titre.replace(" ", "_");
+
 
       $("#recettes").append(
 
   "<li class='row mt-2 mb-2 mx-auto list-group'>"
     +"<div class='text-center' id='produitAffiche1'>"+
       "   <ul class='list-group-item'>"+
-      "      <img class='img-rounded zoom ' src='Photos/"+photo+".jpg' width='150' height='150'/>"+
+      "      <img class='img-rounded zoom ' src='' width='150' height='150'/>"+
       "   </ul>"+
       "   <p class='mx-auto' style='width:200px;'>"+titre+"</p>"+
       "   <a class='w-100 btn btn-outline-warning' href='infoRecette.php?title="+titre+"'><i class='fas fa-info-circle'></i> Info</a>"+

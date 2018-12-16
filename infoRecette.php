@@ -16,13 +16,13 @@
   <?php
   include 'header.php';
    ?>
-  <body class="text-white" style="background:url(background.jpg);background-size:cover">
+  <body class="text-white" style="background:url(img/bg.jpg);background-size:cover">
     <div class="container row mx-auto" style="background:rgb(0,0,0,0.5)">
       <?php
       foreach ($Recettes as $recette){
-       $titre = $recette['titre'];
-       if($_GET['title']==$titre){
-         $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $titre );
+
+       if($_GET['title']==$recette['titre']){
+         $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE',$recette['titre'] );
          $photo = str_replace(" ", "_",$photo);
          $photo = "Photos/".$photo.".jpg";
          echo "<li class='list-group'>";
