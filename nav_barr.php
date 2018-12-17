@@ -193,6 +193,7 @@ function trouverRecettes(alim){
             var titre;
             titre = tabDeRecettes()[i]['titre'];
             photo = titre.replace(" ", "_");
+
             $("#recettes").append(
 
                 "<li class='row mt-2 mb-2 mx-auto list-group'>"

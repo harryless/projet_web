@@ -26,6 +26,7 @@
             echo "<i class='far fa-user'></i> ".$_SESSION['nom']." ".$_SESSION['prenom'];
             echo "</button>
             <div class='dropdown-menu' aria-labelledby='btnGroupDrop1'>
+                <a class='dropdown-item' href='setting.php'><i class='fas fa-cog'></i>Mon compte</a>
                 <a class='dropdown-item' href='logout.php'><i class='fas fa-sign-out-alt'></i>Déconnexion</a>
             </div>";
         }else {

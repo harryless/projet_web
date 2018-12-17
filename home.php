@@ -22,9 +22,9 @@
       <?php include 'header.php'; ?>
       <?php include 'nav_barr.php'; ?>
 
-      <div class="input-group mb-3 container row mx-auto " >
+      <div class="input-group mb-4 container row mx-auto " >
            <label for="recherche"  > </label>
-           <input type="search" id="recherche" name="recherche" autocomplete="on" aria-label="recherche" placeholder="Recherche " list="liste" >
+           <input type="search" id="recherche" name="recherche" autocomplete="on" aria-label="recherche" placeholder="Recherche" list="liste" >
            <datalist id = 'liste'>
                <?php
                     foreach ($Hierarchie as $Key => $Value) {
@@ -35,7 +35,7 @@
                 ?>
             </datalist>
 
-            <button  name = "bouton_recherche" id ="rc" class="btn btn-primary" type="submit">Rechercher</button>
+            <button  name = "bouton_recherche" id ="rc" class="btn btn-secondary" type="submit">Rechercher</button>
             <script type="text/javascript">
                   $("#rc").click(function(){
                       $("#recettes").html("");
@@ -47,7 +47,8 @@
 
 
           <div id="recettes" class="container row mx-auto " style="background:rgba(0,0,0, 0.5)">
-              <div class="row mx-auto "> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div>
+
+              <div class="row mx-auto mb-4 mt-4"> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div>
             <?php
 
 
@@ -66,7 +67,7 @@
                     foreach($users_choices as $user=>$choices){
                       echo "<div class='container row mx-auto  col-10  alert alert-dark' role='alert' style='background:rgba(0,0,0, 0.5)'>";
 
-                              echo "<i class=' text-danger fas fa-user'> $user </i>";
+                              echo "<i class=' text-primary fas fa-user'> $user </i>";
                         foreach($choices as $choice){
                            $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $choice );
                            $photo = str_replace(" ", "_",$photo);

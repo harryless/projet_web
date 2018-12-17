@@ -37,7 +37,6 @@
 
         if ($row['titre']==$recette['titre']) {
 
-
              $idrecette = $row['id_recette'];
              $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $recette['titre'] );
              $photo = str_replace(" ","_",$photo);
@@ -65,10 +64,6 @@
       $titreRecetteAsupp=$_GET['titre'];
       $suppRecette="DELETE FROM recette WHERE   titre like '$titreRecetteAsupp' ";
       $database->query($suppRecette)->fetch();
-
-
-
-
       echo "<meta http-equiv='refresh' content='0;URL=favoris.php'>";
     }
 
@@ -76,8 +71,6 @@
 
     ?>
       </div>
-
-
     </body>
 
     </html>
