@@ -80,11 +80,11 @@
                 $motDePasse = $_POST['motDePasse'];
                 $nom = $_POST['nom'];
                 $prenom = $_POST['Prenom'];
-                if(isset($_POST['sexe']) && isset($_POST['telephone']) && isset($_POST['Email'])){
+                if(isset($_POST['sexe']) || isset($_POST['telephone']) || isset($_POST['Email']) || isset($_POST['dateDeNaissance'])){
                 $sexe = $_POST['sexe'];
                 $telephone = $_POST['telephone'];
-                $email = $_POST['email'];}
-                $dateDeNaissance = $_POST['dateDeNaissance'];
+                $email = $_POST['email'];
+                $dateDeNaissance = $_POST['dateDeNaissance'];}
                 $ville = $_POST['ville'];
                 $codePostal = $_POST['codePostal'];
                 $numeroDeRue = $_POST['numeroDeRue'];
@@ -95,7 +95,7 @@
                 $res=$db->query($idUtilisateur)->fetch();
                 $id_user=$res['id_utilisateur'];
                 $db->query("UPDATE utilisateur
-                set login='$login_after',nom='$nom',prenom='$prenom',motDePasse='$motDePasse' where id_utilisateur='$id_user'");
+                set login='$login_after',nom='$nom',prenom='$prenom',motDePasse='$motDePasse',sexe='$sexe',Email='$email',telephone='$telephone' where id_utilisateur='$id_user'");
                 $_SESSION['login']=$login_after;
                 $_SESSION['nom']=$nom;
                 $_SESSION['prenom']=$prenom;

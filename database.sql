@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le :  lun. 17 déc. 2018 à 11:19
+-- Généré le :  lun. 17 déc. 2018 à 11:33
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.8
 
@@ -39,7 +39,7 @@ CREATE TABLE `utilisateur` (
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `nom`, `prenom`, `motDePasse`, `sexe`, `Email`, `telephone`, `dateDeNaissance`, `adresse`) VALUES
 (4, 'benabbou2u', 'BENABBOU', 'Abdelwahed', 123456, 'h', 'benabbou.abdelwahed@gmail.com', 782817887, '1992-12-06', '26 rue de saurupt, NANCY'),
-(5, 'dpz2u', 'dpz', 'manon', 123456, 'h', '', 658433456, '1993-05-09', '34 boss, Charlemagne ');
+(5, 'manseur5u', 'manseur', 'aghiles', 123456, 'h', 'manseur.aghiles@gmail.com', 726361662, '1993-05-09', '34 boss, Charlemagne ');
 
 --
 -- Index pour les tables déchargées
