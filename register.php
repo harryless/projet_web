@@ -76,6 +76,14 @@
             </form>
         </div>
         <?php
+        // if(isset($_POST['login'])){
+        //         $database = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
+        //         $login = $_POST['login'];
+        //         $resLog = $database->query("SELECT login from utilisateur where login='$login'");}
+        //         if (isset($resLog)){
+        //             echo "login existe deja !! ";
+        //               echo "<meta http-equiv='refresh' content='0;URL=register.php'>";
+        //         }
             if(isset($_POST['Envoyer'])){
                 $login = $_POST['login'];
                 $motDePasse = $_POST['motDePasse'];
@@ -90,7 +98,6 @@
                 $numeroDeRue = $_POST['numeroDeRue'];
                 $nomDeRue = $_POST['nomDeRue'];
                 $adresse = $numeroDeRue .' '. $nomDeRue .', '.$ville;
-                $database = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
 
                 $results = $database->query("INSERT INTO utilisateur(login,nom,prenom,motDePasse,sexe,Email,telephone,dateDeNaissance,adresse)
                 VALUES('$login','$nom','$prenom','$motDePasse','$sexe','$email','$telephone','$dateDeNaissance','$adresse')");
