@@ -48,7 +48,7 @@
                       <img class='img-rounded zoom' src='$photo' width='150' height='150'/>
                       </ul>
                       <p class='mx-auto' style='width:200px;'>".$recette['titre']."</p>
-                      <a class='w-100 btn btn-warning' id='supp' href='panier.php?titre=".$recette['titre']."'>
+                      <a class='w-100 btn btn-warning' id='supp' href='favoris.php?titre=".$recette['titre']."'>
                       <i class='far fa-trash-alt'></i> supprimer
                       </a>";
              echo "</div>";
@@ -69,7 +69,7 @@
 
 
 
-      echo "<meta http-equiv='refresh' content='0;URL=panier.php'>";
+      echo "<meta http-equiv='refresh' content='0;URL=favoris.php'>";
     }
 
 

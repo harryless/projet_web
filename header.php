@@ -13,7 +13,7 @@
           $nbrRecette="SELECT DISTINCT COUNT(titre) AS nombreRecette FROM recette WHERE   id_utilisateur like '$id_user' ";
           $rescompt=$database->query($nbrRecette)->fetch();
           $nbr_favs= $rescompt['nombreRecette'] ;
-          echo "<a class='btn btn-link' href='panier.php'><i class='far fa-thumbs-up'></i>Favoris <span class='badge badge-light'>$nbr_favs</span> </a>";
+          echo "<a class='btn btn-link' href='favoris.php'><i class='far fa-thumbs-up'></i>Favoris <span class='badge badge-light'>$nbr_favs</span> </a>";
         }
        ?>
 
