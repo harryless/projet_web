@@ -42,7 +42,7 @@
                 <div class="form-group col" style="padding-left:10px;">
                    	<legend>Vos coordonnées</legend>
                    	<label for='sexe'>Sexe</label> :
-                   	<select class="form-control" name='sexe' id='sexe'>
+                   	<select class="form-control" name='sexe' id='sexe' required>
                       <option value='h'>Homme</option>
                    		<option value='f'>Femme</option>
                    	</select>
@@ -67,7 +67,7 @@
                  	    <label for="numeroDeRue">Numero de rue</label>
                       <input class="form-control" type="number" name="numeroDeRue" id="numeroDeRue" required/>
                  	    <label for="nomDeRue">Nom de rue</label>
-                      <input class="form-control" type="text" name="nomDeRue" id="nomDeRue" required/>
+                      <input class="form-control" type="text" name="nomDeRue" id="nomDeRue" /required>
                  </div>
 
                  <div class="form-group col text-center my-auto" role="group">
@@ -76,33 +76,40 @@
             </form>
         </div>
         <?php
-        // if(isset($_POST['login'])){
-        //         $database = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
-        //         $login = $_POST['login'];
-        //         $resLog = $database->query("SELECT login from utilisateur where login='$login'");}
-        //         if (isset($resLog)){
-        //             echo "login existe deja !! ";
-        //               echo "<meta http-equiv='refresh' content='0;URL=register.php'>";
-        //         }
-            if(isset($_POST['Envoyer'])){
-                $login = $_POST['login'];
-                $motDePasse = $_POST['motDePasse'];
-                $nom = $_POST['nom'];
-                $prenom = $_POST['Prenom'];
-                $sexe = $_POST['sexe'];
-                $telephone = $_POST['telephone'];
-                $email = $_POST['email'];
-                $dateDeNaissance = $_POST['dateDeNaissance'];
-                $ville = $_POST['ville'];
-                $codePostal = $_POST['codePostal'];
-                $numeroDeRue = $_POST['numeroDeRue'];
-                $nomDeRue = $_POST['nomDeRue'];
-                $adresse = $numeroDeRue .' '. $nomDeRue .', '.$ville;
 
-                $results = $database->query("INSERT INTO utilisateur(login,nom,prenom,motDePasse,sexe,Email,telephone,dateDeNaissance,adresse)
-                VALUES('$login','$nom','$prenom','$motDePasse','$sexe','$email','$telephone','$dateDeNaissance','$adresse')");
-                echo " félicitations votre compte est bien crée ";
-            }
+
+                if(isset($_POST['Envoyer'])){
+
+                    $database = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
+                    $login = $_POST['login'];
+
+                    $verifLogin = $database->query("SELECT COUNT(*) AS existe_pseudo from utilisateur where login like '$login'");
+                    $row = $verifLogin->fetch();
+                    if (($row['existe_pseudo'] == '0')){
+                        $login = $_POST['login'];
+                        $motDePasse = $_POST['motDePasse'];
+                        $nom = $_POST['nom'];
+                        $prenom = $_POST['Prenom'];
+                        $sexe = $_POST['sexe'];
+                        $telephone = $_POST['telephone'];
+                        $email = $_POST['email'];
+                        $dateDeNaissance = $_POST['dateDeNaissance'];
+                        $ville = $_POST['ville'];
+                        $codePostal = $_POST['codePostal'];
+                        $numeroDeRue = $_POST['numeroDeRue'];
+                        $nomDeRue = $_POST['nomDeRue'];
+                        $adresse = $numeroDeRue .' '. $nomDeRue .', '.$ville;
+
+                        $results = $database->query("INSERT INTO utilisateur(login,nom,prenom,motDePasse,sexe,Email,telephone,dateDeNaissance,adresse)
+                        VALUES('$login','$nom','$prenom','$motDePasse','$sexe','$email','$telephone','$dateDeNaissance','$adresse')");
+                        echo " félicitations votre compte est bien crée ";}
+
+                    else{
+                        echo "Le pseudo $login existe déjà";
+                        exit();
+                        }
+
+                    }
         ?>
     </body>
 </html>

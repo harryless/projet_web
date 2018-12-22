@@ -48,43 +48,43 @@
 
           <div id="recettes" class="container row mx-auto " style="background:rgba(0,0,0, 0.5)">
 
-              <div class="row mx-auto mb-4 mt-4"> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div>
+              <!-- <div class="row mx-auto mb-4 mt-4"> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div> -->
             <?php
 
 
             $db = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
-                    $sql = "SELECT r.id_utilisateur,u.id_utilisateur,r.titre,u.login FROM recette r,utilisateur u where r.id_utilisateur=u.id_utilisateur   ;";
-                    $results = $db->query($sql)->fetchAll();
-
-                    // On regroupe les favoris par utilisateur
-                    $users_choices = array();
-
-                    foreach($results as $result){
-                        $users_choices[$result['login']][] = $result['titre'];
-                    }
-
-                    echo "<div class='row col-12'>";
-                    foreach($users_choices as $user=>$choices){
-                      echo "<div class='container row mx-auto  col-10  alert alert-dark' role='alert' style='background:rgba(0,0,0, 0.5)'>";
-
-                              echo "<i class=' text-primary fas fa-user'> $user </i>";
-                        foreach($choices as $choice){
-                           $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $choice );
-                           $photo = str_replace(" ", "_",$photo);
-                           $photo = "Photos/".$photo.".jpg";
-                          echo "<li class='mt-2 mb-2 mx-auto list-group'>
-                                  <div class='text-center' id='produitAffiche1'>
-                                      <ul class='list-group-item'>
-                                        <img class='img-rounded zoom ' src='$photo' width='100' height='100'/>
-                                      </ul>
-
-                                      <a class='w-60 btn btn-outline-warning' href='infoRecette.php?title=$choice'><i class='fas fa-info-circle'></i> Info</a>
-                                      <a class='w-60 btn btn-outline-danger' href='home.php?titre=$choice'><i class='far fa-thumbs-up'></i> Favoris</a>
-                              </div></li>";
-                        }
-                        echo '</div>';
-                    }
-                    echo '</div>';
+                    // $sql = "SELECT r.id_utilisateur,u.id_utilisateur,r.titre,u.login FROM recette r,utilisateur u where r.id_utilisateur=u.id_utilisateur   ;";
+                    // $results = $db->query($sql)->fetchAll();
+                    //
+                    // // On regroupe les favoris par utilisateur
+                    // $users_choices = array();
+                    //
+                    // foreach($results as $result){
+                    //     $users_choices[$result['login']][] = $result['titre'];
+                    // }
+                    //
+                    // echo "<div class='row col-12'>";
+                    // foreach($users_choices as $user=>$choices){
+                    //   echo "<div class='container row mx-auto  col-10  alert alert-dark' role='alert' style='background:rgba(0,0,0, 0.5)'>";
+                    //
+                    //           echo "<i class=' text-primary fas fa-user'> $user </i>";
+                    //     foreach($choices as $choice){
+                    //        $photo = iconv( 'UTF-8','ASCII//TRANSLIT//IGNORE', $choice );
+                    //        $photo = str_replace(" ", "_",$photo);
+                    //        $photo = "Photos/".$photo.".jpg";
+                    //       echo "<li class='mt-2 mb-2 mx-auto list-group'>
+                    //               <div class='text-center' id='produitAffiche1'>
+                    //                   <ul class='list-group-item'>
+                    //                     <img class='img-rounded zoom ' src='$photo' width='100' height='100'/>
+                    //                   </ul>
+                    //
+                    //                   <a class='w-60 btn btn-outline-warning' href='infoRecette.php?title=$choice'><i class='fas fa-info-circle'></i> Info</a>
+                    //                   <a class='w-60 btn btn-outline-danger' href='home.php?titre=$choice'><i class='far fa-thumbs-up'></i> Favoris</a>
+                    //           </div></li>";
+                    //     }
+                    //     echo '</div>';
+                    // }
+                    // echo '</div>';
 
 
               if (isset($_SESSION['login'])) {
