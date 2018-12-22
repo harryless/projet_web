@@ -45,7 +45,7 @@
                     <label for='nom'>Nom</label>
                     <input class="form-control" type='text' name='nom' id='nom' autofocus required/>
                    	<label for='prenom'>Prenom</label>
-                    <input class="form-control" type='text' name='Prenom' id='prenom' required/>
+                    <input class="form-control" type='text' name='Prenom' id='prenom' />
                    	<label for='telephone'>Telephone</label>
                     <input class="form-control" type='text' name='telephone' id='telephone' />
                    	<label for='dateDeNaissance'>Date de naissance</label>
@@ -71,20 +71,19 @@
                  </div>
             </form>
         </div>
+
         <?php
+
            if(isset($_POST['Envoyer'])){
-
-
-               $login=$_SESSION['login'];
+                $login=$_SESSION['login'];
                 $login_after = $_POST['login'];
                 $motDePasse = $_POST['motDePasse'];
                 $nom = $_POST['nom'];
                 $prenom = $_POST['Prenom'];
-                if(isset($_POST['sexe']) || isset($_POST['telephone']) || isset($_POST['Email']) || isset($_POST['dateDeNaissance'])){
                 $sexe = $_POST['sexe'];
                 $telephone = $_POST['telephone'];
                 $email = $_POST['email'];
-                $dateDeNaissance = $_POST['dateDeNaissance'];}
+                $dateDeNaissance = $_POST['dateDeNaissance'];
                 $ville = $_POST['ville'];
                 $codePostal = $_POST['codePostal'];
                 $numeroDeRue = $_POST['numeroDeRue'];
@@ -95,10 +94,12 @@
                 $res=$db->query($idUtilisateur)->fetch();
                 $id_user=$res['id_utilisateur'];
                 $db->query("UPDATE utilisateur
-                set login='$login_after',nom='$nom',prenom='$prenom',motDePasse='$motDePasse',sexe='$sexe',Email='$email',telephone='$telephone' where id_utilisateur='$id_user'");
+                set login='$login_after',nom='$nom',prenom='$prenom',motDePasse='$motDePasse' ,sexe='$sexe',telephone='$telephone' ,Email='$email' ,adresse='$adresse' ,dateDeNaissance='$dateDeNaissance' where id_utilisateur='$id_user'");
                 $_SESSION['login']=$login_after;
                 $_SESSION['nom']=$nom;
                 $_SESSION['prenom']=$prenom;
+                echo $_SESSION['login'];
+                echo $_SESSION['nom'];
 
                 echo " modification bien enregistrees";
 

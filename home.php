@@ -48,10 +48,11 @@
 
           <div id="recettes" class="container row mx-auto " style="background:rgba(0,0,0, 0.5)">
 
+
               <!-- <div class="row mx-auto mb-4 mt-4"> <i class="fab fa-gratipay"></i> Favorite Recipes </i></div> -->
             <?php
 
-
+            echo $_SESSION['login'];
             $db = new PDO('mysql:host=localhost;dbname=projetBoissons','root','root');
                     // $sql = "SELECT r.id_utilisateur,u.id_utilisateur,r.titre,u.login FROM recette r,utilisateur u where r.id_utilisateur=u.id_utilisateur   ;";
                     // $results = $db->query($sql)->fetchAll();
